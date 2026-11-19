@@ -7,6 +7,9 @@ drift apart. Every line below cites its source so it can be re-read rather than 
 > Those two files arrive with the starter kit. If they are not in the repo root yet, the kit has not
 > been unpacked.
 
+**The product brief is `docs/BRIEF.md`.** It is the spec for what the app does, and is separate
+from the professor's process requirements below. Decision records cite it as §1–§14.
+
 ---
 
 ## What he requires

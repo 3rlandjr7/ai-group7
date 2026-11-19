@@ -25,6 +25,17 @@
 - Process rules (plan, Definition of Done, four roles, DEVBOOK/BUGLOG) are in `AGENTS.md`.
 - **Decisions** live in `docs/decisions/`. If you are choosing between options and rejecting one,
   run `/decide` and write the record. Requirements index: `docs/COURSE-REQUIREMENTS.md`.
+- **The product brief is `docs/BRIEF.md`** — what the app is meant to do. `docs/PLAN.md` and every
+  decision record cite its sections as §1–§14, so read it before changing either.
+
+## Read these before starting work
+1. `docs/PLAN.md` — the features, who owns what, and the open questions
+2. `docs/decisions/` — **why** it is built this way, newest last. Read 0001 and 0005 at minimum
+3. `DEVBOOK.md` — what exists now and what is not yet confirmed
+4. `docs/BRIEF.md` — the product spec, when a decision cites a § you need
+
+Do not re-derive a decision that already has a record. If you disagree with one, write a new record
+that supersedes it rather than quietly doing something different.
 
 ## Who owns what
 - Lead: [name]. Owns `index.html`, `styles.css`, the data layer, the price fetcher, `CLAUDE.md`,
