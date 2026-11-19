@@ -10,7 +10,7 @@ adds them to the site. You don't need GitHub.
 
 A component is one self-contained block of the page. Yours is:
 
-> **[hero tile / comparison table / price table / share box — lead fills this in]**
+> **[the team picks who takes which: purchase card tile · comparison table · price table · share box]**
 
 ### Start a new chat in Claude and paste this
 
@@ -20,8 +20,8 @@ A component is one self-contained block of the page. Yours is:
 > Component: **[your component]**
 > What it shows: **[lead fills in — see docs/PLAN.md for your feature's Definition of Done]**
 >
-> Colors: background [#fff], text [#1d1d1f], main [#2f5bea], accent [#f2a541] [lead fills in final colors]
-> Font: [font name]
+> Colors: background #fbfaf8, text #1b1d1f, main #1f6f5c, accent #a85a2b
+> Font: the browser default system font — don't load a web font
 >
 > Rules: no page header, footer or navigation menu — just this one block. No JavaScript.
 > No external libraries. Must look good on a phone (375px wide). Use made-up sample values so
@@ -42,7 +42,8 @@ is how it looks and reads, not where the numbers come from.
 
 ## Job 2 — your two purchase cards
 
-Each card is research on one product someone might buy. Pick up your two from [lead].
+Each card is research on one product someone might buy. The team splits the nine products
+between the four of you — two each, with one done together as a worked example.
 
 In a **new** Claude chat, use the research prompt template [lead] sends you. Do the steps in
 this order — it matters, and here's why.
@@ -107,10 +108,6 @@ Message [integrator] in [group chat] with:
 - change the colours or fonts — ask [lead] if you want different ones
 - build a whole page — just your one block
 - add JavaScript — [lead] handles anything that moves
-
-## Deadline
-
-Send your first version by **[date]**.
 
 ---
 

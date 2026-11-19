@@ -1,11 +1,18 @@
 /* Lead owns this file. Sections use these variables; never hard-code colors or fonts. */
 :root {
-  --color-bg: #ffffff;
-  --color-surface: #f5f5f7;
-  --color-text: #1d1d1f;
-  --color-muted: #6e6e73;
-  --color-primary: #2f5bea;   /* [pick team colors] */
-  --color-accent: #f2a541;
+  --color-bg: #fbfaf8;        /* warm off-white */
+  --color-surface: #f2efe9;   /* table rows, cards */
+  --color-text: #1b1d1f;
+  --color-muted: #656b72;     /* timestamps, "checked on" */
+  --color-primary: #1f6f5c;   /* deep green */
+  --color-accent: #a85a2b;    /* clay, for badges */
+
+  /* Verdict colours for "Is the sale real?" — defined centrally so four
+     teammates don't each invent their own red. All pairs checked against
+     --color-bg: every one passes WCAG AA for normal text. */
+  --color-good: #1f6f5c;      /* real deal        5.77:1 */
+  --color-warn: #8a5a12;      /* normal price     5.67:1 */
+  --color-bad:  #a33b32;      /* inflated list    6.23:1 */
 
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-heading: var(--font-body);  /* [pick a heading font] */

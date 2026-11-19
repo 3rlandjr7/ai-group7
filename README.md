@@ -1,4 +1,4 @@
-# ai-group7
+# Shortlist
 
 A purchase research and tracking app, built by six people with Claude.
 
