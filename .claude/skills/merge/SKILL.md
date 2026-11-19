@@ -14,6 +14,10 @@ disable-model-invocation: true
    - hard-coded colors or fonts, `<script>` tags, external libraries
    - secrets or large files
    - a missing DEVBOOK.md entry
+   - a decision made but not recorded: the diff chooses between options, or the DEVBOOK entry says
+     "instead of", but `docs/decisions/` has nothing covering it. Ask the author to run `/decide`
+   - a Definition of Done ticked without evidence beside it: AGENTS.md rule 7 is "prove it, don't
+     claim it", so a bare [x] with no command output, number or screenshot is a send-back
    - merge conflicts (`gh pr view <n> --json mergeable`)
 5. Offer to run the Reviewer: a fresh chat with `agents/reviewer.md`, given the plan entry, `gh pr diff <n>`, the Tester's report and the DEVBOOK/BUGLOG entries. Post its verdict as a PR comment.
 6. Run the `/preview` steps so the lead can check it on desktop and at phone width.
