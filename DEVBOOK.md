@@ -42,6 +42,35 @@ the app without asking you.
 
 ## Entries
 
+### 2026-11-19: Data layer — cards load and are validated (F2)
+- **What changed:** `app/schema.js` validates every purchase card, `app/store.js` loads them behind
+  the `DataStore` interface from decision 0002, and `app/main.js` reports what loaded. A test
+  fixture and a manifest were added under `data/cards/`.
+- **Why:** Cards are hand-written, converted from a teammate's Markdown, so some will be malformed.
+  Without validation a missing field becomes `undefined` and the card renders half-empty with no
+  clue why. The validator also **enforces decision 0005**: fields like `winner`, `score` and `rank`
+  are rejected outright rather than ignored, because accepting them quietly would let the design
+  rot back to storing verdicts.
+- **Definition of Done and evidence:**
+  - [x] **Valid cards load** — browser reports `1 card loaded and valid`, 0 console errors, and all
+        four section placeholders still render.
+  - [x] **A malformed card is rejected with a readable on-screen error, not a blank page** — a
+        deliberately broken card produced **10 errors**, each naming the field and the reason, e.g.
+        *"has \"winner\" — a stored verdict — see decision 0005, the pick is a \"choose X if\"
+        branch, not a field"* and *"stage \"shopping\" is not one of idea, researching,
+        shortlisted, …"*. The valid card still loaded alongside it and the page stayed intact.
+  - [x] **F1 did not regress** — re-ran its check: 0 console errors, 4 placeholders, no horizontal
+        scroll at 375/768/1280.
+- **Files touched:** app/schema.js, app/store.js, app/main.js, data/cards/index.json,
+  data/cards/_fixture.json, index.html, styles.css, docs/PLAN.md
+- **Not confirmed / known limits:** `data/cards/index.json` is a **shared manifest** — the one file
+  every new card touches, which is the merge-conflict risk the per-card files were designed to
+  avoid. It stays because GitHub Pages cannot list a directory and the alternatives are worse;
+  conflicts are one line and trivial. The fixture is **not real research** — the team writes the
+  first real card together at the kickoff, and the fixture is deleted then. Nothing renders a card
+  yet; that is F3 onward. Tested in Chromium only.
+- **Reviewer verdict:** (pending — no fresh-chat Reviewer pass has been run)
+
 ### 2026-11-19: Research design settled, palette and name applied (0005)
 - **What changed:** Decided how research survives price changes (decision 0005), applied the
   colour palette to `styles.css` with three verdict colours, named the app **Shortlist**, and

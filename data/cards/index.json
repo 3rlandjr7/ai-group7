@@ -1,0 +1,6 @@
+{
+  "comment": "Every card file that exists. GitHub Pages cannot list a directory, so this names them. Add your slug when you add a card.",
+  "cards": [
+    "_fixture"
+  ]
+}
