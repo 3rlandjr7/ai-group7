@@ -78,11 +78,27 @@ belong to the separate MS-project build, not this one.
 
 | # | Question | Who decides | Answer |
 |---|---|---|---|
-| Q1 | What is the app called? | Team | _unanswered — needed for the header_ |
-| Q2 | Who is teammate 1–4, by name, and which component is theirs? | Team | _unanswered_ |
-| Q3 | What is the deadline, and is there an earlier checkpoint? | Instructor | _unanswered_ |
-| Q4 | Colours and fonts for `styles.css` — must be settled before components start | Lead | _unanswered_ |
-| Q5 | Does the repo default branch move to `main`? | Lead | _unanswered — currently a stray session branch_ |
+| Q1 | What is the app called? | Team | **Shortlist** — provisional, 2026-11-19. Change in `index.html` and `README.md` if the team prefers another |
+| Q2 | Who is teammate 1–4, and which component is theirs? | Team | **open — the team splits this among themselves.** Four components: card tile, comparison table, price table, share box |
+| Q3 | What is the deadline? | Instructor | dropped 2026-11-19 — not tracked here |
+| Q4 | Colours and fonts for `styles.css` | Lead | **answered** 2026-11-19 — palette applied, all pairs pass WCAG AA; system font, no web font |
+| Q5 | Does the repo default branch move to `main`? | Lead | **done** 2026-11-19 — default is `main`; the stray branch is deleted |
+| Q6 | Which two of the nine products does each person research? | Team | **open — the team splits this**, with one done together as a worked example |
+
+### TODO — placeholders still to fill
+
+These are real blanks in committed files. Grep for them: `[name]`, `[lead]`, `[integrator]`,
+`[group chat]`.
+
+| File | What's blank | Who fills it |
+|---|---|---|
+| `TEAMMATE-GUIDE.md` | who to send work to, which group chat | Lead, when sending it |
+| `CLAUDE.md` | lead, co-integrator, four component owners | Lead, once Q2 is settled |
+| `README.md` | the "who does what" table | Lead, once Q2 is settled |
+| `sections/*.html` | `Owner: [name]` on each placeholder | replaced when the real components land |
+| `DEVBOOK.md` | one `[name]` in the setup entry | Lead |
+
+None of these block the team from starting — the guide tells them to agree Q2 and Q6 themselves.
 
 ## 8. Risks
 

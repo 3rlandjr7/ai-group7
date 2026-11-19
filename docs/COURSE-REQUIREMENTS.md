@@ -94,8 +94,13 @@ what the entry would say.
 | [0002](decisions/0002-fake-data-seam.md) | Interfaces at the data and AI boundaries | 2026-11-19 |
 | [0003](decisions/0003-independent-merchant-price-data.md) | Live prices from independent merchants | 2026-11-19 |
 | [0004](decisions/0004-teammate-owns-a-component.md) | Each teammate owns a UI component, not just research | 2026-11-19 |
+| [0005](decisions/0005-research-stores-judgment-not-verdicts.md) | Research stores judgment, not verdicts | 2026-11-19 |
 
 **Assumptions resolved:** A2 — plain HTML/CSS is *acceptable but not required* (2026-11-19).
 
-**Still open:** see the parking lot — stack choice, which `docs/PLAN.md` survives, the `main` branch
-question, section owners, app name.
+**Still open:** see `docs/PLAN.md` §7 — who owns which component, which products each person
+researches, and the stack choice (currently plain HTML/CSS/JS, assumed not confirmed).
+
+**Closed since:** the `main` branch question (default branch moved, stray branch deleted), which
+`docs/PLAN.md` survives (rewritten for the app), app name (**Shortlist**, provisional) and the
+colour palette (applied, WCAG AA checked).

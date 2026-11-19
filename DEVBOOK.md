@@ -42,6 +42,35 @@ the app without asking you.
 
 ## Entries
 
+### 2026-11-19: Research design settled, palette and name applied (0005)
+- **What changed:** Decided how research survives price changes (decision 0005), applied the
+  colour palette to `styles.css` with three verdict colours, named the app **Shortlist**, and
+  rewrote `TEAMMATE-GUIDE.md` so the team can start without waiting on the lead.
+- **Why:** A card stored a verdict ("Leaf Two wins"). Verdicts are built from prices, prices
+  change, so the verdict went quietly wrong while still looking authoritative. Four mechanisms for
+  *detecting* that were designed and discarded — a staleness badge, price-movement triggers,
+  rank-inversion detection, per-card conditions — each because a simpler framing removed the need
+  for the last. The card now stores only what a human decided; the fetcher supplies what changes.
+  Rejected: a question tree per category (breaks the card-and-stages concept), an evidence ledger
+  with no conclusions (honest but useless), and versioning the prompt to regenerate on demand
+  (LLM output varies between runs, so the reproducibility claim undermines itself).
+- **Definition of Done and evidence:**
+  - [x] **Palette is accessible** — all 9 foreground/background pairs computed against
+        `--color-bg`: text 16.21, muted 5.16, primary 5.77, accent 4.84, good 5.77, warn 5.67,
+        bad 6.23, text-on-surface 14.73, muted-on-surface 4.69. **All pass WCAG AA (4.5) for
+        normal text.**
+  - [x] **The page still works after the change** — re-ran the F1 browser check: 0 console
+        errors, all 4 placeholders load, no horizontal scroll at 375/768/1280.
+  - [x] **Teammates can start without the lead** — `TEAMMATE-GUIDE.md` carries real colours and
+        tells the team to split components and products among themselves.
+- **Files touched:** styles.css, index.html, README.md, TEAMMATE-GUIDE.md, docs/PLAN.md,
+  docs/COURSE-REQUIREMENTS.md, docs/decisions/0005-*.md
+- **Not confirmed / known limits:** the name **Shortlist** is provisional. Assumption A7 is
+  unchecked — whether teammates can write genuine reader-fact discriminators rather than filler
+  will only be known when the first card comes through review. The research design has not been
+  tested against a real card yet; it was reviewed in discussion, not in use.
+- **Reviewer verdict:** (pending — no fresh-chat Reviewer pass has been run)
+
 ### 2026-11-19: Page shell verified and BUG-001 fixed (F1)
 - **What changed:** Checked the shipped page shell against F1's Definition of Done in a real
   browser, found one bug, and fixed it. `styles.css` gained
