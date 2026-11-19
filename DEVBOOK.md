@@ -157,4 +157,6 @@ the app without asking you.
   (`[name]`, `[Site name]`). The repo's **default branch is `claude/gifted-archimedes-ybtos9`,
   not `main`** — that should be changed in GitHub settings before Pages or branch protection is
   set up. Committed as `4d518ca`.
+  *(Resolved later the same day: the default branch was moved to `main` and the stray branch
+  deleted. Left above as written, since this entry records what was true at the time.)*
 - **Reviewer verdict:** (pending — no fresh-chat Reviewer pass has been run)

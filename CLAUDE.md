@@ -9,9 +9,7 @@
   `docs/decisions/0001`.
 - Stack: plain HTML + CSS + a little JavaScript. `index.html` loads each block from a file with a
   small script; no build step, no framework.
-- Repo: https://github.com/3rlandjr7/ai-group7. Hosting: GitHub Pages [TBD].
-  **The repo's default branch is currently `claude/gifted-archimedes-ybtos9`, not `main`** — check
-  before assuming.
+- Repo: https://github.com/3rlandjr7/ai-group7. Default branch: `main`. Hosting: GitHub Pages [TBD].
 - **Components** live one per file and have one owner each, like sections did. A component is a
   self-contained block: card tile, comparison table, price table, share box.
 - **Purchase cards** are data files, one per product, one owner each.
