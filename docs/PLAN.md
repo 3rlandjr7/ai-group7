@@ -41,7 +41,7 @@ fonts; no `<script>` tags inside component files.
 | F7 | **Dashboard** — cards grouped by stage | Lead | Must | Every card file appears under the correct stage heading; counts match the files on disk |
 | F8 | **Research content** — 2 purchase cards each | All 4 teammates | Must | Each card has ≥3 sources with credibility tiers, 2–3 finalists, a price table and a one-line pick. No placeholder text left |
 | F9 | **Live price fetcher** — open storefront APIs, run on a schedule | Lead | Must | Each card carries ≥2 prices pulled from published keyless endpoints, each stamped with when it was fetched |
-| F10 | **robots.txt gate + compliance log** | Co-integrator | Must | The fetcher reads `robots.txt` before each host; a deliberately disallowed host is skipped and logged with the rule that matched; the log is committed and readable |
+| F10 | **robots.txt gate + compliance log** | Co-integrator | Must | The fetcher reads `robots.txt` before each host. A disallowed host is skipped and logged with the rule that matched. **A host whose `robots.txt` cannot be read is also skipped** — the gate fails closed, never open (see R7). The log is committed and readable |
 | F11 | **Published** on GitHub Pages | Lead | Must | Public URL opens on a phone on cellular and matches local preview |
 | F12 | "Research with your own Claude" — copy the full prompt, paste the result back | Lead / co | Nice | Button copies a complete prompt; a valid pasted response renders a card; an invalid one is rejected with a readable error |
 | F13 | Bookmarklet that reads the product page you already have open | Lead | Nice | Clicking it on a product page fills a price row, in the reader's own browser session |
@@ -68,7 +68,7 @@ belong to the separate MS-project build, not this one.
 | A1 | The assignment is open-ended; the professor constrains process, not stack | Confirmed by Rene, 2026-11-19 | **confirmed** |
 | A2 | Plain HTML/CSS/JS with no build step is acceptable | Follows from A1 — acceptable, not required | **confirmed** |
 | A3 | Four teammates can produce a working component in free Claude from a written brief | One teammate does a dry run before the others start | unchecked |
-| A4 | Enough independent merchants sell our seed products and expose open product JSON | Lead tests 3 products against real stores before F9 is committed to | **unchecked — highest risk** |
+| A4 | Enough independent merchants sell our seed products and expose open product JSON | Tested 2026-11-19 against 6 real stores | **confirmed** — 4 of 6 served open product JSON over HTTPS with no key. Found 37 razor matches on hensonshaving.com, 4 on leafshave.com, 19 mouse matches on gloriousgaming.com, each with current price, `compare_at_price` and stock status (e.g. Leaf Two Razor $79.00, was $109.00, in stock). The 2 failures were not Shopify stores, so the rule is "merchants on Shopify or WooCommerce", not "independent merchants" — picking stores is part of the research job |
 | A5 | GitHub Pages is the host | Lead decides; repo default branch must be fixed first | unchecked |
 | A6 | Images and content we use are ours or free to use | Each owner states the source in their PR | unchecked |
 
@@ -86,7 +86,8 @@ belong to the separate MS-project build, not this one.
 
 | # | Risk | What we'll do |
 |---|---|---|
-| R1 | **A4 fails** — too few independent merchants expose usable product JSON for our products | Test 3 products first. If it fails, fall back to prices recorded by hand with their checked-at date, which still satisfies every feature except F9 |
+| R1 | ~~A4 fails~~ — **retired 2026-11-19.** A4 tested and confirmed; the hand-recorded fallback is no longer the expected path, though it remains available per decision 0003 |
+| R7 | **The robots.txt gate fails open.** If a site's `robots.txt` cannot be read, a naive gate proceeds anyway — which is what the first test run did on gloriousgaming.com. That is more permissive than decision 0003 promises | F10's Definition of Done requires **fail closed**: unreadable `robots.txt` means skip the host and log it, exactly as an explicit disallow does. Tested with a host whose robots.txt is unreachable |
 | R2 | Four components look like four different websites | Settle Q4 before anyone starts; every component uses only `styles.css` variables; the lead checks this at review |
 | R3 | A teammate goes quiet and their component never arrives | Placeholders stay in place so the page always works. Agree a cut-off date at the start, not at the end |
 | R4 | A teammate pastes AI-generated code carrying its own `<script>` or external library | No `<script>` in component files; the lead strips them at review and says what was removed |
