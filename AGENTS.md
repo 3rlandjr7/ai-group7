@@ -7,10 +7,20 @@
 
 ## Project
 
-- **App:** Group 7's one-page website. _(Fill in: what the site is about and who it's for.)_
-- **Stack:** plain HTML + CSS. `index.html` loads each section from `sections/<name>.html`; shared colors/fonts live in `styles.css`. No build step, no framework.
+- **App:** a purchase research and tracking app, for people buying considered things — appliances,
+  tools, electronics, home goods — who want trustworthy research instead of SEO listicles. Each
+  purchase is a card carrying its sources, a comparison of finalists and a price table.
+- **Stack:** plain HTML + CSS + a little JavaScript. `index.html` loads each block from its own
+  file; shared colours and fonts live in `styles.css`. No build step, no framework, no backend —
+  data is committed to the repo.
 - **How to run it:** `/preview` (or `python3 -m http.server 8000`, then open http://localhost:8000).
-- **How to test it:** no automated tests. "Tests" are the manual checks in each feature's Definition of Done: the page loads with no console errors, the section shows at desktop and phone width (375px), all links work, and it uses only the `styles.css` variables.
+  It must be served over HTTP — opening `index.html` directly from disk shows an empty page,
+  because the blocks are fetched.
+- **How to test it:** no automated tests. "Tests" are the manual checks in each feature's
+  Definition of Done in `docs/PLAN.md`: the page loads with no console errors, it reads correctly
+  at phone width (375px), links work, prices are sorted correctly, and only `styles.css` variables
+  are used. Paste the real output — never claim a check passed without running it.
+- **Decisions:** `docs/decisions/`. Requirements index: `docs/COURSE-REQUIREMENTS.md`.
 - **Plan:** `docs/PLAN.md`. **Project history:** `DEVBOOK.md`. **Bugs:** `BUGLOG.md`.
 - **Team rules** (owners, git safety, branches): see `CLAUDE.md`. If the two files conflict, ask.
 

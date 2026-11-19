@@ -93,6 +93,7 @@ what the entry would say.
 | [0001](decisions/0001-demo-scope.md) | Build the real app on committed data, not a marketing page | 2026-11-19 |
 | [0002](decisions/0002-fake-data-seam.md) | Interfaces at the data and AI boundaries | 2026-11-19 |
 | [0003](decisions/0003-independent-merchant-price-data.md) | Live prices from independent merchants | 2026-11-19 |
+| [0004](decisions/0004-teammate-owns-a-component.md) | Each teammate owns a UI component, not just research | 2026-11-19 |
 
 **Assumptions resolved:** A2 — plain HTML/CSS is *acceptable but not required* (2026-11-19).
 

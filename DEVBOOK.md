@@ -11,10 +11,18 @@ the app without asking you.
 
 ## How the app works (keep this section current)
 
-- **What it is:** Group 7's one-page website. _(Add one sentence on the topic and audience.)_
-- **Main parts:** `index.html` (page shell, header/footer, loads each section), `styles.css` (shared colors and fonts), `sections/hero.html`, `sections/about.html`, `sections/features.html`, `sections/contact.html`
-- **Data:** none. Static content only.
-- **How to run / test:** `/preview`, then the manual checks in `docs/PLAN.md`
+- **What it is:** the front end of a purchase research and tracking app. Each thing you are
+  shopping for is a card that moves through stages — idea, researching, shortlisted, decided,
+  bought, return window, owned — carrying its sources, a comparison of 2–3 finalists and a price
+  table. No backend: everything is committed to the repo.
+- **Main parts:** `index.html` (page shell, header/footer, loads each block), `styles.css` (shared
+  colours, fonts and spacing), the four section placeholders in `sections/`, and — still to be
+  built — the data layer, the four teammate components, and the price fetcher.
+- **Data:** one file per purchase card, committed to the repo and validated on load. Live prices
+  come from independent Shopify and WooCommerce storefronts, which publish product JSON openly;
+  big-box retailers are linked without prices. See `docs/decisions/0003`.
+- **How to run / test:** `/preview`, then the Definition of Done checks in `docs/PLAN.md`. Must be
+  served over HTTP — opening the file directly shows an empty page.
 
 ---
 

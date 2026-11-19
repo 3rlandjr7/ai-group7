@@ -1,23 +1,35 @@
 # ai-group7
 
-Group 7's web page, built by six people with Claude.
+A purchase research and tracking app, built by six people with Claude.
 
-**Process:** start with [GUIDE.md](GUIDE.md); the AI follows [AGENTS.md](AGENTS.md). Plan: [docs/PLAN.md](docs/PLAN.md).
+Each thing you're shopping for is a card that moves through stages — idea, researching,
+shortlisted, decided, bought, return window, owned — carrying its sources, a comparison of the
+finalists, and a price table showing where it's cheapest today.
+
+**Process:** start with [GUIDE.md](GUIDE.md); the AI follows [AGENTS.md](AGENTS.md).
+Plan: [docs/PLAN.md](docs/PLAN.md). Why it's built this way: [docs/decisions/](docs/decisions/).
 
 ## Who does what
-| Person | Role | Section |
+| Person | Role | Owns |
 |---|---|---|
-| [Lead] | Lead: repo, layout, styles, reviews and merges PRs | header / footer |
-| [Name] | Co-integrator: turns artifacts into sections | [section] |
-| [Name] | Builds a section in free Claude | hero |
-| [Name] | Builds a section in free Claude | about |
-| [Name] | Builds a section in free Claude | features |
-| [Name] | Builds a section in free Claude | contact |
+| [Lead] | Lead: repo, shell, styles, data layer, price fetcher. Reviews and merges PRs | `index.html`, `styles.css` |
+| [Name] | Co-integrator: turns artifacts into components, runs the robots.txt gate | conversions, compliance log |
+| [Name] | Builds a component in free Claude + 2 research cards | purchase card tile |
+| [Name] | Builds a component in free Claude + 2 research cards | comparison table |
+| [Name] | Builds a component in free Claude + 2 research cards | price table + "is the sale real?" |
+| [Name] | Builds a component in free Claude + 2 research cards | share-message box |
 
 ## How it fits together
-- `index.html`: page shell. Loads every file in `sections/`.
-- `styles.css`: shared colors, fonts and spacing.
-- `sections/<name>.html`: one file per section, one owner each.
+- `index.html`: page shell — header, nav, footer. Loads every block from its own file.
+- `styles.css`: shared colours, fonts and spacing. Everything else uses these variables.
+- One file per component and one per purchase card, each with a single owner — so two people
+  are never editing the same file.
+
+## Where the prices come from
+Independent Shopify and WooCommerce merchants publish their product data openly, with no key and
+no sign-up, so we read it directly. Amazon, Best Buy and Walmart don't permit republishing their
+prices, so those are **linked without a price** instead. The fetcher checks each site's
+`robots.txt` first and logs anything it skips. See [decision 0003](docs/decisions/0003-independent-merchant-price-data.md).
 
 ## Run it locally
 `python3 -m http.server 8000`, then open http://localhost:8000. Or use `/preview` in Claude Code.
