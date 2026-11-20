@@ -1,0 +1,83 @@
+{
+  "hosts": {
+    "leafshave.com": {
+      "allowed": true,
+      "reason": "robots.txt HTTP 200; can_fetch(/products/deliberately-broken-handle.json) = True",
+      "checked_at": "2026-11-20T03:13:58+00:00"
+    },
+    "hensonshaving.com": {
+      "allowed": true,
+      "reason": "robots.txt HTTP 200; can_fetch(/products/henson-shave-system-in-aircraft-aluminum.json) = True",
+      "checked_at": "2026-11-20T03:14:00+00:00"
+    },
+    "www.obdlink.com": {
+      "allowed": false,
+      "reason": "robots.txt unreadable (URLError) - failing closed",
+      "checked_at": "2026-11-20T03:14:03+00:00"
+    }
+  },
+  "runs": [
+    {
+      "at": "2026-11-20T03:11:05+00:00",
+      "hosts_checked": 2,
+      "allowed": 2,
+      "skipped": 0
+    },
+    {
+      "at": "2026-11-20T03:12:19+00:00",
+      "hosts_checked": 2,
+      "allowed": 2,
+      "skipped": 0
+    },
+    {
+      "at": "2026-11-20T03:13:04+00:00",
+      "hosts_checked": 2,
+      "allowed": 2,
+      "skipped": 0
+    },
+    {
+      "at": "2026-11-20T03:13:20+00:00",
+      "hosts_checked": 3,
+      "allowed": 2,
+      "skipped": 1
+    },
+    {
+      "at": "2026-11-20T03:13:36+00:00",
+      "hosts_checked": 3,
+      "allowed": 2,
+      "skipped": 1
+    },
+    {
+      "at": "2026-11-20T03:13:58+00:00",
+      "hosts_checked": 3,
+      "allowed": 2,
+      "skipped": 1
+    },
+    {
+      "at": "2026-11-20T03:14:03+00:00",
+      "hosts_checked": 3,
+      "allowed": 2,
+      "skipped": 1
+    }
+  ],
+  "changes": [
+    {
+      "host": "leafshave.com",
+      "allowed": true,
+      "reason": "robots.txt HTTP 200; can_fetch(/products/leaf-two-razor-2-1.json) = True",
+      "checked_at": "2026-11-20T03:11:01+00:00"
+    },
+    {
+      "host": "hensonshaving.com",
+      "allowed": true,
+      "reason": "robots.txt HTTP 200; can_fetch(/products/the-henson-shave-system.json) = True",
+      "checked_at": "2026-11-20T03:11:03+00:00"
+    },
+    {
+      "host": "www.obdlink.com",
+      "allowed": false,
+      "reason": "robots.txt unreadable (URLError) - failing closed",
+      "checked_at": "2026-11-20T03:13:20+00:00"
+    }
+  ]
+}

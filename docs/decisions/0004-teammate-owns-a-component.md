@@ -1,7 +1,7 @@
 # 0004 — Each teammate owns a UI component, not just research content
 
 - **Date:** 2026-11-19
-- **Status:** Accepted
+- **Status:** Accepted; the robots-gate ownership below is **superseded by [0006](0006-fetcher-design.md)**
 - **Decided by:** Rene (lead)
 
 ## Context

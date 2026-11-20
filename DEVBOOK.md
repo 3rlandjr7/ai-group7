@@ -42,6 +42,43 @@ the app without asking you.
 
 ## Entries
 
+### 2026-11-20: Live price fetcher and robots gate (F9, F10)
+- **What changed:** `tools/fetch_prices.py` reads each card's store URLs and writes current prices
+  to `data/prices/<slug>.json`, gated on `robots.txt`. `.github/workflows/prices.yml` runs it
+  daily. `app/store.js` gained `getPrices()`. Decision 0006 records the design.
+- **Why:** Decision 0005 split the card (what a human decided) from the prices (what changes).
+  This is the second half. Prices live in their own files so the machine never edits files
+  teammates are working on — which also makes the workflow's rebase-and-retry safe, since humans
+  never touch price files.
+- **Definition of Done and evidence:**
+  - [x] **Real prices from real stores** — `leafshave.com 79.00 USD (was 109.00)`,
+        `hensonshaving.com 105.00 USD (was 150.96)`, each the cheapest **available** variant.
+  - [x] **The robots gate fails closed** — pointed at a host whose `robots.txt` is unreachable:
+        `skipped-by-robots … robots.txt unreadable (URLError) - failing closed`, no fetch
+        attempted. This was the exact defect found during the A4 test, now fixed and proven.
+  - [x] **A failure keeps the last good price with its ORIGINAL date** — broke a URL on purpose:
+        status `not-found`, price still `79.0 USD`, `price_checked_at` still `03:13:16` while
+        `checked_at` moved to `03:13:32`. Claiming we checked today would have been a lie.
+  - [x] **A single 404 does not mean discontinued** — ran three times: strikes 1 and 2 stayed
+        quiet, `delisted` fired only on strike 3. Stores rename slugs.
+  - [x] **F1 and F2 did not regress** — re-ran both: 0 console errors, 4 placeholders, no
+        horizontal scroll at 375/768/1280, card still loads and validates.
+- **Files touched:** tools/fetch_prices.py, .github/workflows/prices.yml, app/store.js,
+  data/compliance-log.json, docs/decisions/0006, docs/decisions/0004 (superseded pointer),
+  docs/PLAN.md, docs/COURSE-REQUIREMENTS.md, SETUP-CHECKLIST.md
+- **Not confirmed / known limits:** **Five correctness bugs were found by running against real
+  stores that four rounds of design review missed** — `variants[0]` would have reported a razor at
+  $139 instead of $79; prices are strings that sort wrongly; `/products/<handle>.json` omits
+  `available` entirely so an in-stock razor read as out-of-stock; `compare_at_price` is sometimes
+  equal to the price, which would invent a fake discount; out-of-stock items are in the feed. All
+  fixed, all recorded in 0006. I also **wrongly claimed Henson's prices were CAD** after reading
+  its country field instead of its currency field — it sells in USD, and `docs/PLAN.md` is
+  corrected. **WooCommerce is untested** and unwritten: the candidate hosts were unreachable from
+  this container, which is a limit of the environment, not evidence Woo is unusable. The workflow
+  has **never run in Actions** — only locally. Prices are keyed per card though a price belongs to
+  a product; the same item in two cards would be stored twice.
+- **Reviewer verdict:** (pending — no fresh-chat Reviewer pass has been run)
+
 ### 2026-11-19: Data layer — cards load and are validated (F2)
 - **What changed:** `app/schema.js` validates every purchase card, `app/store.js` loads them behind
   the `DataStore` interface from decision 0002, and `app/main.js` reports what loaded. A test

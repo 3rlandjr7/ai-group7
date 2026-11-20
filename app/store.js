@@ -59,6 +59,16 @@ export class FakeStore extends DataStore {
     return cards.find(c => c.slug === slug) || null;
   }
 
+  /**
+   * Prices for one card, or null if it has never been fetched.
+   * A missing file is NOT an error - every new card has one until the next scheduled run, and
+   * treating that as a failure would break the page for exactly the cards people just added.
+   */
+  async getPrices(slug) {
+    try { return await this._fetchJson(`data/prices/${slug}.json`); }
+    catch { return null; }
+  }
+
   /** Cards grouped by stage, for the dashboard (brief section G). */
   async byStage() {
     const { cards } = await this.listCards();

@@ -98,6 +98,7 @@ what the entry would say.
 | [0003](decisions/0003-independent-merchant-price-data.md) | Live prices from independent merchants | 2026-11-19 |
 | [0004](decisions/0004-teammate-owns-a-component.md) | Each teammate owns a UI component, not just research | 2026-11-19 |
 | [0005](decisions/0005-research-stores-judgment-not-verdicts.md) | Research stores judgment, not verdicts | 2026-11-19 |
+| [0006](decisions/0006-fetcher-design.md) | Prices fetched into their own files by a zero-dependency job | 2026-11-20 |
 
 **Assumptions resolved:** A2 — plain HTML/CSS is *acceptable but not required* (2026-11-19).
 

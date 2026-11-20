@@ -1,0 +1,50 @@
+name: Refresh prices
+
+# Prices come from merchants whose storefronts publish product data openly (decision 0003).
+# This runs in Actions, never in the browser: the site is static and a browser can neither hold
+# credentials nor fetch across origins.
+
+on:
+  schedule:
+    # Daily, at a quiet minute. GitHub's scheduled runs are best-effort and can be delayed or
+    # dropped under load, so the page shows "last checked <time>" and never promises "daily".
+    - cron: "17 9 * * *"
+  workflow_dispatch:        # so a human can run it on demand
+
+permissions:
+  contents: write           # the only permission needed; there are no secrets in this workflow
+
+concurrency:
+  group: refresh-prices     # never let two runs commit at once
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # No pip install on purpose: the fetcher is standard library only, so there is nothing to
+      # pin and nothing to break in CI.
+      - name: Fetch prices
+        run: python3 tools/fetch_prices.py
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "shortlist-price-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/prices data/compliance-log.json; then
+            echo "No price changes."
+            exit 0
+          fi
+          git add data/prices data/compliance-log.json
+          git commit -m "Refresh prices ($(date -u +%Y-%m-%d))"
+          # Someone may have pushed while we were fetching. Rebase and retry rather than fail -
+          # safe because humans never edit price files, so there is nothing to conflict with.
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "Push rejected, rebasing (attempt $attempt)"
+            git pull --rebase --autostash
+          done
+          echo "Could not push after 3 attempts" >&2
+          exit 1
