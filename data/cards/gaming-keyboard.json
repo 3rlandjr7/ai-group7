@@ -1,0 +1,102 @@
+{
+  "slug": "gaming-keyboard",
+  "title": "Wired 96-98% gaming keyboard, hot-swappable, 8 kHz, $60-120",
+  "stage": "shortlisted",
+  "researched_on": "2026-11-19",
+  "owner": "[name]",
+  "requirements": [
+    "96-98% layout",
+    "tactile switches",
+    "hot-swappable",
+    "8000 Hz polling",
+    "about $60-120"
+  ],
+  "no_credible_testing": "No source on the brief's most-credible list (Consumer Reports, RTINGS, Which?, Wirecutter, Trusted Reviews, CPSC) has tested these boards. The finalists rest on hands-on reviews from established tech publications, tiered fair, plus manufacturer specs. Switch feel is a matter of taste and was not measured by anyone here.",
+  "sources": [
+    { "name": "TechRadar — Logitech G316 X 98 review", "tier": "fair", "dated": "not stated", "url": "https://www.techradar.com/computing/keyboards/logitech-g316-x-98-review" },
+    { "name": "TweakTown — Logitech G316 X 98 review", "tier": "fair", "dated": "not stated", "url": "https://www.tweaktown.com/reviews/11552/logitech-g316-x-98-wired-gaming-keyboard-retro-inspired-board-that-falls-a-little-short/index.html" },
+    { "name": "Tom's Hardware — Keychron V5 Ultra 8K review", "tier": "fair", "dated": "not stated", "url": "https://www.tomshardware.com/peripherals/mechanical-keyboards/keychron-v5-ultra-8k-review" },
+    { "name": "Tom's Guide — Royal Kludge S98 review", "tier": "fair", "dated": "not stated", "url": "https://www.tomsguide.com/computing/peripherals/royal-kludge-s98-review" },
+    { "name": "Logitech G316 X 98 product page (manufacturer spec)", "tier": "fair", "dated": "not stated", "url": "https://www.logitechg.com/en-us/shop/p/g316-x-98-gaming-keyboard" },
+    { "name": "Keychron V5 8K product page (manufacturer spec)", "tier": "fair", "dated": "not stated", "url": "https://www.keychron.com/products/keychron-v5-8k-qmk-wired-custom-mechanical-keyboard" },
+    { "name": "Keychron V5 Ultra 8K product page (manufacturer spec)", "tier": "fair", "dated": "not stated", "url": "https://www.keychron.com/products/keychron-v5-ultra-8k-wireless-custom-mechanical-keyboard" },
+    { "name": "Lester Chan — G316 X owner review (personal blog)", "tier": "low", "dated": "2026-09-07", "url": "https://lesterchan.net/blog/2026/09/07/logitech-g316-x-wired-mechanical-gaming-keyboard-review/" },
+    { "name": "PCGuide — Amazon deal post", "tier": "low", "dated": "not stated", "url": "https://www.pcguide.com/deals/logitech-g316-x-98-gaming-keyboard-now-at-record-low-price-in-limited-time-amazon-deal/" }
+  ],
+  "finalists": [
+    {
+      "name": "Logitech G316 X 98",
+      "why": "the only finalist with more than a handful of reviews — 121 on the maker's own store plus several hands-on press reviews",
+      "specs": {
+        "layout": "98%, dial and LED display",
+        "connection": "wired",
+        "polling": "8000 Hz",
+        "hot_swap": "yes, MX-style",
+        "tactile_switch": "Logitech tactile, 2.2 mm actuation, 55 g",
+        "build": "gasket mount, double-shot PBT keycaps",
+        "reviews": "121 on logitechg.com"
+      },
+      "notes": [
+        "TweakTown found the tactile version stiff on the larger keys and fairly loud",
+        "no switch or keycap puller in the box",
+        "TechRadar's main criticism was the lack of wireless"
+      ],
+      "stores": [{ "host": "logitechg.com", "url": "https://www.logitechg.com/en-us/shop/p/g316-x-98-gaming-keyboard" }]
+    },
+    {
+      "name": "Keychron V5 8K",
+      "why": "cheapest board that meets every requirement; the wired-only version of the V5 Ultra, so it shares its switches and features",
+      "specs": {
+        "layout": "96%, knob",
+        "connection": "wired",
+        "polling": "8000 Hz, adjustable down to 125 Hz",
+        "hot_swap": "yes",
+        "tactile_switch": "Super Brown or Super Banana",
+        "build": "tray mount, steel plate, double-shot PBT keycaps, 1080 g",
+        "reviews": "1 on keychron.com"
+      },
+      "notes": [
+        "a tray mount with a steel plate usually feels firmer than a gasket mount",
+        "almost no customer reviews yet, and no press review of this exact model"
+      ],
+      "stores": [{ "host": "keychron.com", "url": "https://www.keychron.com/products/keychron-v5-8k-qmk-wired-custom-mechanical-keyboard" }]
+    },
+    {
+      "name": "Keychron V5 Ultra 8K",
+      "why": "the only finalist that keeps 8 kHz polling over wireless",
+      "specs": {
+        "layout": "96%, knob",
+        "connection": "wired, 2.4 GHz wireless, Bluetooth",
+        "polling": "8000 Hz wired or wireless, ships set to 1000 Hz",
+        "hot_swap": "yes, 3- and 5-pin MX-style",
+        "tactile_switch": "Silk POM Brown or Banana",
+        "build": "gasket mount, PC plate, double-shot PBT keycaps, 983 g, 660-hour battery",
+        "reviews": "2 on keychron.com, plus a Tom's Hardware review"
+      },
+      "notes": [
+        "Tom's Hardware calls it a solid option for a budget 8K board and praises battery life and comfort",
+        "ships at 1000 Hz — 8 kHz has to be switched on in Keychron's web app over a wired connection"
+      ],
+      "stores": [{ "host": "keychron.com", "url": "https://www.keychron.com/products/keychron-v5-ultra-8k-wireless-custom-mechanical-keyboard" }]
+    }
+  ],
+  "choose_if": [
+    { "condition": "you want to use it away from the desk, or without a cable, at any point", "pick": "Keychron V5 Ultra 8K" },
+    { "condition": "you would rather not be the first person to review a product you bought", "pick": "Logitech G316 X 98" }
+  ],
+  "default_pick": "Logitech G316 X 98",
+  "ruled_out": [
+    { "name": "Royal Kludge S98", "why": "hot-swappable with a tactile option, but 8 kHz is not advertised" },
+    { "name": "Aula F99 Pro", "why": "8 kHz is not advertised" },
+    { "name": "Lemokey X5", "why": "1000 Hz polling only" },
+    { "name": "RK C96 HE", "why": "8 kHz and rapid trigger, but its magnetic switches are linear only" },
+    { "name": "Corsair Vanguard 96", "why": "tactile and 8 kHz, but switches are soldered in, so not hot-swappable" }
+  ],
+  "caveats": [
+    "US buyer; prices and availability differ elsewhere.",
+    "How each tactile switch feels is a matter of taste and no source here measured it. Keychron's Banana is reported to be lighter than its Brown.",
+    "The star ratings and fuller review detail on the Keychron boards could not be read.",
+    "Amazon and Best Buy are linked without prices on purpose — see decision 0003."
+  ],
+  "prices": []
+}
