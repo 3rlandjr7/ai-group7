@@ -231,3 +231,49 @@ the app without asking you.
   exists, which is what its own note says to do. The dashboard does not link a card to anything,
   because there is no detail view yet.
 - **Reviewer verdict:** (pending)
+
+### 2026-11-20: Direction change (0007) and F8b — the shared research template
+- **What changed:** Decision `0007` supersedes `0004`: the per-teammate component split is
+  dropped. Avery plans the webpage build, Camila implements it in Claude Code. Research is
+  unchanged — Bryce, Avery, Robert and Raul each write two purchase cards. New
+  `prompts/product-research.md` is the one shared research template (F8b). `TEAMMATE-GUIDE.md`,
+  `CLAUDE.md`, `README.md`, `docs/PLAN.md` (F3–F6, Q2) and `MEETING-KICKOFF.md` updated to match.
+- **Why:** The repo described a process the team had abandoned. `TEAMMATE-GUIDE.md` in
+  particular was about to be sent to three people telling them their first job was to build a UI
+  component in free Claude — work nobody wants any more. And its line 48 promised "the research
+  prompt template Rene sends you", which did not exist, so the guide could not be sent at all.
+  F8b existed to stop eight cards coming back in eight shapes (0005); with components gone, the
+  cards are now the *only* thing three teammates have to defend at grading, which raises the
+  stakes on it rather than lowering them.
+- **Design note:** the template outputs **Markdown, not JSON** — teammates author no JSON
+  (0004, and `app/schema.js`'s own header: *"converted from a teammate's Markdown"*). Its seven
+  output headings map one-to-one onto the schema so conversion is mechanical. It records its
+  inputs in an `inputs` field, which needed **no schema change**: `validateCard` rejects only the
+  five FORBIDDEN keys and ignores unknown ones.
+- **Definition of Done and evidence:**
+  - [x] **Tier words in the template are the ones the validator accepts** — `schema.js` has
+        `TIERS = ['most-credible', 'fair', 'low']`; the template asks for
+        `most-credible,fair,low`. Exact match.
+  - [x] **Every forbidden field is named as "do not produce"** — schema FORBIDDEN is
+        `winner, best, score, weights, rank`; all five appear in the template's rules.
+        **MISSING from template: none.**
+  - [x] **An `inputs` field validates with no schema edit** — dinner-plates card plus an
+        `inputs` object → **VALID**. Control: the same card plus `winner` → **rejected**,
+        *'has "winner" — a stored verdict'*. So the template's claim about both is true.
+  - [x] **The guide no longer tells anyone to build a component** — one `component` match left
+        in `TEAMMATE-GUIDE.md`, and it is the "this changed at the kickoff" note itself.
+  - [x] **The guide no longer promises a file that doesn't exist** — it now names
+        `prompts/product-research.md`, which is present (8,739 bytes).
+  - [x] **Page unaffected** — stages still `["Researching 1","Shortlisted 1"]`, 0 console
+        errors, no horizontal scroll at 375px.
+- **Files touched:** `docs/decisions/0007-avery-plans-camila-builds.md` (new),
+  `docs/decisions/0004-teammate-owns-a-component.md` (status line only — the one edit the
+  records' own rules allow), `prompts/product-research.md` (new), `TEAMMATE-GUIDE.md`,
+  `CLAUDE.md`, `README.md`, `docs/PLAN.md`, `MEETING-KICKOFF.md`
+- **Not confirmed / known limits:** **the template has not yet produced a card.** It is verified
+  against the schema mechanically, not end to end — nobody has pasted it into free Claude and
+  come back with research. The first teammate to run it is the real test, and the template should
+  be treated as version 1 until one card has come back through it. `[group chat]` is still blank
+  in `TEAMMATE-GUIDE.md`. `sections/*.html` and `index.html` are untouched on purpose — what
+  replaces them is Avery's plan's business.
+- **Reviewer verdict:** (pending)

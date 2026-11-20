@@ -27,9 +27,9 @@ Five things. Everything else is already done.
 | # | Decision |
 |---|---|
 | 1 | Is **Shortlist** the right name? (we can change it) |
-| 2 | Who is the **co-integrator** — the second person using Claude Code |
-| 3 | Who takes each of the **four components** |
-| 4 | Who researches which **two products** |
+| 2 | ~~Who is the **co-integrator**~~ — **settled: Camila** |
+| 3 | ~~Who takes each of the four components~~ — **dropped.** Avery plans the build, Camila implements it in Claude Code (`docs/decisions/0007`) |
+| 4 | Who researches which **two products** — the one still open |
 | 5 | Where we send work to each other (group chat) |
 
 ---
