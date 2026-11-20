@@ -96,8 +96,8 @@ These are real blanks in committed files. Grep for them: `[name]`.
 
 | File | What's blank | Who fills it |
 |---|---|---|
-| `CLAUDE.md` | lead, co-integrator, four component owners | Lead, once Q2 is settled |
-| `README.md` | the "who does what" table | Lead, once Q2 is settled |
+| `CLAUDE.md` | the four component owners (lead and co-integrator filled 2026-11-20) | Lead, once Q2 is settled |
+| `README.md` | the four component rows (lead and co-integrator filled 2026-11-20) | Lead, once Q2 is settled |
 | `sections/*.html` | `Owner: [name]` on each placeholder | replaced when the real components land |
 | `DEVBOOK.md` | one `[name]` in the setup entry | Lead |
 
