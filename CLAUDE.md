@@ -36,12 +36,14 @@ Do not re-derive a decision that already has a record. If you disagree with one,
 that supersedes it rather than quietly doing something different.
 
 ## Who owns what
-- Lead: [name]. Owns `index.html`, `styles.css`, the data layer, the price fetcher, `CLAUDE.md`,
+- Lead: Rene. Owns `index.html`, `styles.css`, the data layer, the price fetcher, `CLAUDE.md`,
   `AGENTS.md`, `.claude/`, and everything outside the component and card files. Reviews and merges
   every PR.
-- Co-integrator: [name]. Edits component and card files only, through PRs. Also owns the
+- Co-integrator: Camila. Edits component and card files only, through PRs. Also owns the
   robots.txt gate and the compliance log.
-- Component owners: card tile [name], comparison table [name], price table [name], share box [name].
+- Component owners: **not yet assigned (Q2 is open).** The four building components are Bryce,
+  Avery, Robert and Raul; which component each takes is still being settled — the team may go a
+  different direction on the component split. Fill this in once it is decided.
 - Each of those four also owns two purchase-card data files. See `docs/decisions/0004`.
 - If a change needs a file the user doesn't own, stop and tell them to ask the lead.
 
