@@ -313,7 +313,7 @@ the app without asking you.
   - [x] **No console errors, no horizontal scroll** — checked at 1280px and 375px: **0 console
         errors, 0 page errors**, `scrollWidth > clientWidth` false at both. Screenshot taken at
         375px.
-  - [x] **`index.json` is valid JSON** — parses, lists `_fixture, dinner-plates, gaming-keyboard`.
+  - [x] **`index.json` is valid JSON** — parses, lists `dinner-plates, gaming-keyboard`.
   - [x] **No component-owner language left** — `TEAMMATE-GUIDE.md`, `CLAUDE.md`, `README.md`,
         `MEETING-KICKOFF.md` and `docs/PLAN.md` F3–F6/Q2 all read per `0007`. The first run of
         this check **failed**: three passages described the old split and had auto-merged without
@@ -327,10 +327,14 @@ the app without asking you.
 - **Not confirmed / known limits:**
   - **No fresh-chat Tester or Reviewer pass has been run** on either branch or on this merge.
     Three DEVBOOK entries now read "Reviewer verdict: (pending)".
-  - **`data/cards/_fixture.json` is still there**, and on screen it is the whole of "Researching 1"
-    — fake data with owner `[name]` sitting above real research. Both the F7 entry and the fixture's
-    own note say to delete it once a real card exists. Two now exist. Left in place because
-    `AGENTS.md` forbids deleting files without showing the lead first.
+  - ~~`data/cards/_fixture.json` is still there~~ — **deleted 2026-11-20** on the lead's say-so,
+    now that two real cards exist, which is what the F7 entry and the fixture's own note both
+    asked for. It was the whole of "Researching 1": fake data with owner `[name]` sitting above
+    real research. Nothing in the code referenced it — `grep -rn '_fixture'` outside `.git` hit
+    only `index.json` and past DEVBOOK entries — so the delete is just the file plus its slug.
+    After it: headings read `["Your purchases","Shortlisted 2"]`, the empty "Researching" heading
+    correctly does not render, both real cards still show, 0 console errors and no horizontal
+    scroll at 1280px and 375px.
   - **F8 is 2 of 8 cards, and both are Bryce's.** Avery, Robert and Raul have not started. Nothing
     in this merge changes that.
   - The keyboard card's sourcing is thinner than the plates card: 7 `fair` + 2 `low`, no
