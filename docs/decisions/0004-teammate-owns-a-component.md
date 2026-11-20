@@ -1,7 +1,7 @@
 # 0004 — Each teammate owns a UI component, not just research content
 
 - **Date:** 2026-11-19
-- **Status:** Accepted; the robots-gate ownership below is **superseded by [0006](0006-fetcher-design.md)**
+- **Status:** **Superseded by [0007](0007-avery-plans-camila-builds.md)** (the component split; the two-cards-each research split survives). The robots-gate ownership below was already **superseded by [0006](0006-fetcher-design.md)**
 - **Decided by:** Rene (lead)
 
 ## Context

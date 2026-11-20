@@ -12,12 +12,16 @@ Plan: [docs/PLAN.md](docs/PLAN.md). Why it's built this way: [docs/decisions/](d
 ## Who does what
 | Person | Role | Owns |
 |---|---|---|
-| [Lead] | Lead: repo, shell, styles, data layer, price fetcher. Reviews and merges PRs | `index.html`, `styles.css` |
-| [Name] | Co-integrator: turns artifacts into components, runs the robots.txt gate | conversions, compliance log |
-| [Name] | Builds a component in free Claude + 2 research cards | purchase card tile |
-| [Name] | Builds a component in free Claude + 2 research cards | comparison table |
-| [Name] | Builds a component in free Claude + 2 research cards | price table + "is the sale real?" |
-| [Name] | Builds a component in free Claude + 2 research cards | share-message box |
+| Rene | Lead: repo, shell, styles, data layer, price fetcher. Reviews and merges PRs | `index.html`, `styles.css` |
+| Avery | Plans the webpage build | the build plan, + 2 research cards |
+| Camila | Implements the build in Claude Code; converts cards; runs the robots.txt gate | the page, conversions, compliance log |
+| Bryce | Writes research in free Claude | 2 purchase cards |
+| Robert | Writes research in free Claude | 2 purchase cards |
+| Raul | Writes research in free Claude | 2 purchase cards |
+
+Eight purchase cards in all, two each. Everyone uses the same research template,
+`prompts/product-research.md`, so the cards come back comparable. Teammates used to build a UI
+component each; that was dropped at the kickoff — see `docs/decisions/0007`.
 
 ## How it fits together
 - `index.html`: page shell — header, nav, footer. Loads every block from its own file.

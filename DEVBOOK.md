@@ -197,3 +197,147 @@ the app without asking you.
   *(Resolved later the same day: the default branch was moved to `main` and the stray branch
   deleted. Left above as written, since this entry records what was true at the time.)*
 - **Reviewer verdict:** (pending — no fresh-chat Reviewer pass has been run)
+
+### 2026-11-20: F7 — dashboard, cards grouped by stage
+- **What changed:** New `app/dashboard.js` renders every valid card under its stage heading with
+  a count. `app/main.js` calls it instead of printing a bare total; `index.html` swapped the
+  `#app-status` block for `#dashboard`; dashboard styles appended to `styles.css`, all scoped
+  under `#dashboard`.
+- **Why:** F2's "2 cards loaded and valid." proved the data layer worked but answered nobody's
+  question. The reader wants to know what they are shopping for and how far each one has got —
+  that is a grouping, not a count. The count survives inside each stage heading, where it means
+  something. Stages are iterated from `STAGES` in `schema.js` rather than from the data, so they
+  always read in life-cycle order no matter what order the manifest lists cards in.
+- **Deliberately not built:** the card entries are plain — title, finalists, owner, date. F3
+  (card tile) is a teammate's component and owns how one card looks. Styling a handsome tile here
+  would guarantee one of the two gets thrown away.
+- **Definition of Done and evidence:**
+  - [x] **Every card appears under the correct stage heading** — page rendered
+        `["Researching 1","Shortlisted 1"]` with 2 card entries: the test fixture and
+        "Everyday cream dinner plates, 10.5 in. stoneware".
+  - [x] **Counts match the files on disk** — counted independently from the manifest:
+        `{'researching': 1, 'shortlisted': 1}`. Identical to the headings.
+  - [x] **A broken card still fails loudly (F2 not regressed)** — a deliberately malformed
+        `_broken.json` (bad stage, a forbidden `winner` field, no sources, no finalists) produced
+        **7 readable on-screen errors** naming each field and why, while both valid cards still
+        rendered and the page stayed intact. 0 uncaught page errors. Test file removed afterwards.
+  - [x] **No console errors, no horizontal scroll** — clean at 1280px and 375px.
+  - [x] **Only `styles.css` variables** — 0 hex, `rgb()` or `hsl()` literals in the dashboard
+        block.
+- **Files touched:** `app/dashboard.js` (new), `app/main.js`, `index.html`, `styles.css`
+- **Not confirmed / known limits:** no Tester or Reviewer pass has been run in a fresh chat.
+  `data/cards/_fixture.json` now occupies a stage heading of its own, so fake data sits beside
+  real research and looks legitimate on screen — it should be deleted now that a real card
+  exists, which is what its own note says to do. The dashboard does not link a card to anything,
+  because there is no detail view yet.
+- **Reviewer verdict:** (pending)
+
+### 2026-11-20: Direction change (0007) and F8b — the shared research template
+- **What changed:** Decision `0007` supersedes `0004`: the per-teammate component split is
+  dropped. Avery plans the webpage build, Camila implements it in Claude Code. Research is
+  unchanged — Bryce, Avery, Robert and Raul each write two purchase cards. New
+  `prompts/product-research.md` is the one shared research template (F8b). `TEAMMATE-GUIDE.md`,
+  `CLAUDE.md`, `README.md`, `docs/PLAN.md` (F3–F6, Q2) and `MEETING-KICKOFF.md` updated to match.
+- **Why:** The repo described a process the team had abandoned. `TEAMMATE-GUIDE.md` in
+  particular was about to be sent to three people telling them their first job was to build a UI
+  component in free Claude — work nobody wants any more. And its line 48 promised "the research
+  prompt template Rene sends you", which did not exist, so the guide could not be sent at all.
+  F8b existed to stop eight cards coming back in eight shapes (0005); with components gone, the
+  cards are now the *only* thing three teammates have to defend at grading, which raises the
+  stakes on it rather than lowering them.
+- **Design note:** the template outputs **Markdown, not JSON** — teammates author no JSON
+  (0004, and `app/schema.js`'s own header: *"converted from a teammate's Markdown"*). Its seven
+  output headings map one-to-one onto the schema so conversion is mechanical. It records its
+  inputs in an `inputs` field, which needed **no schema change**: `validateCard` rejects only the
+  five FORBIDDEN keys and ignores unknown ones.
+- **Definition of Done and evidence:**
+  - [x] **Tier words in the template are the ones the validator accepts** — `schema.js` has
+        `TIERS = ['most-credible', 'fair', 'low']`; the template asks for
+        `most-credible,fair,low`. Exact match.
+  - [x] **Every forbidden field is named as "do not produce"** — schema FORBIDDEN is
+        `winner, best, score, weights, rank`; all five appear in the template's rules.
+        **MISSING from template: none.**
+  - [x] **An `inputs` field validates with no schema edit** — dinner-plates card plus an
+        `inputs` object → **VALID**. Control: the same card plus `winner` → **rejected**,
+        *'has "winner" — a stored verdict'*. So the template's claim about both is true.
+  - [x] **The guide no longer tells anyone to build a component** — one `component` match left
+        in `TEAMMATE-GUIDE.md`, and it is the "this changed at the kickoff" note itself.
+  - [x] **The guide no longer promises a file that doesn't exist** — it now names
+        `prompts/product-research.md`, which is present (8,739 bytes).
+  - [x] **Page unaffected** — stages still `["Researching 1","Shortlisted 1"]`, 0 console
+        errors, no horizontal scroll at 375px.
+- **Files touched:** `docs/decisions/0007-avery-plans-camila-builds.md` (new),
+  `docs/decisions/0004-teammate-owns-a-component.md` (status line only — the one edit the
+  records' own rules allow), `prompts/product-research.md` (new), `TEAMMATE-GUIDE.md`,
+  `CLAUDE.md`, `README.md`, `docs/PLAN.md`, `MEETING-KICKOFF.md`
+- **Not confirmed / known limits:** **the template has not yet produced a card.** It is verified
+  against the schema mechanically, not end to end — nobody has pasted it into free Claude and
+  come back with research. The first teammate to run it is the real test, and the template should
+  be treated as version 1 until one card has come back through it. `[group chat]` is still blank
+  in `TEAMMATE-GUIDE.md`. `sections/*.html` and `index.html` are untouched on purpose — what
+  replaces them is Avery's plan's business.
+- **Reviewer verdict:** (pending)
+
+### 2026-11-20: Integrate the two open branches (F8 keyboard card, design brief, docs under 0007)
+- **What changed:** Merged `claude/blissful-mccarthy-rup9gc` (clean) and
+  `claude/awesome-clarke-3ij3j4` (6 conflicts) into one integration branch. From `clarke` this
+  brings Bryce's second card, `data/cards/gaming-keyboard.json`, and `docs/DESIGN-BRIEF.md` — one
+  page for whoever designs the look, instead of BRIEF + PLAN + six decision records. `docs/BRIEF.md`
+  §10 now says the nine seed products are an example list, not a fixed one.
+- **Why the conflicts resolved the way they did:** `clarke` was written against decision `0004`
+  and assigned four component owners — card tile Avery, comparison table Bryce, price table Raul,
+  share box Robert. `0007` (on `blissful`, decided by Rene at the kickoff) supersedes `0004` and
+  deletes that split. The records' own rule is that the newest accepted record wins, so every
+  conflicted hunk took the `0007` side. This is a **content** decision, not a mechanical one:
+  `clarke`'s version of those five doc files describes a process the team has abandoned.
+- **Not a straight "take ours" anywhere.** Three hunks kept `clarke`'s work:
+  - `data/cards/index.json` — both card slugs, not one. A list gaining a different entry on each
+    side is the clearly-safe conflict case.
+  - `TEAMMATE-GUIDE.md` "Send it in" — `clarke` deleted the dead `[group chat]` placeholder, which
+    the F8b entry above had logged as a known blank. Kept that deletion, kept `0007`'s recipient:
+    "Send it to Camila, who adds it to the site". The blank is now gone from the guide.
+  - `docs/PLAN.md` Q6 — kept `clarke`'s "example list, not fixed" clarification.
+- **`DESIGN-BRIEF.md` edited on the way in (4 lines).** It was written under `0004` and said "the
+  four components, one owner each". Under `0007` they are four blocks of one page with one planner
+  and one builder. §2, §3, §4 and §7 reworded; the design content itself — tokens, 375px rule,
+  honest empty states, out-of-scope list — is untouched.
+- **Definition of Done and evidence:**
+  - [x] **No conflict markers anywhere** — repo-wide grep for `<<<<<<<`, `>>>>>>>`, `=======`
+        outside `.git` → **NONE**. `git diff --diff-filter=U` → empty.
+  - [x] **Both new cards validate** — `validateCard` on each: `gaming-keyboard` **VALID**
+        (9 sources, 3 finalists, owner Bryce, researched_on 2026-11-19);
+        `dinner-plates` **VALID** (4 sources, 3 finalists, owner Bryce, 2026-11-19).
+  - [x] **The page renders all three cards under the right stages** — served over HTTP, headings
+        read `["Your purchases","Researching 1","Shortlisted 2"]`, and the text contains
+        "dinner plates", "Logitech G316" and "Test fixture". No validation errors on screen.
+  - [x] **No console errors, no horizontal scroll** — checked at 1280px and 375px: **0 console
+        errors, 0 page errors**, `scrollWidth > clientWidth` false at both. Screenshot taken at
+        375px.
+  - [x] **`index.json` is valid JSON** — parses, lists `dinner-plates, gaming-keyboard`.
+  - [x] **No component-owner language left** — `TEAMMATE-GUIDE.md`, `CLAUDE.md`, `README.md`,
+        `MEETING-KICKOFF.md` and `docs/PLAN.md` F3–F6/Q2 all read per `0007`. The first run of
+        this check **failed**: three passages described the old split and had auto-merged without
+        conflicting, so resolving the six conflicts had not caught them — `MEETING-KICKOFF.md`
+        "build **one component**" and "Your component", and `docs/PLAN.md`'s teammate row "Build
+        one component, research two cards". All three rewritten; re-run leaves one hit, the
+        `CLAUDE.md` line that says the split *is dropped*.
+- **Files touched:** `CLAUDE.md`, `README.md`, `TEAMMATE-GUIDE.md`, `MEETING-KICKOFF.md`,
+  `docs/PLAN.md`, `docs/DESIGN-BRIEF.md`, `data/cards/index.json`, plus everything the two merges
+  carried in.
+- **Not confirmed / known limits:**
+  - **No fresh-chat Tester or Reviewer pass has been run** on either branch or on this merge.
+    Three DEVBOOK entries now read "Reviewer verdict: (pending)".
+  - ~~`data/cards/_fixture.json` is still there~~ — **deleted 2026-11-20** on the lead's say-so,
+    now that two real cards exist, which is what the F7 entry and the fixture's own note both
+    asked for. It was the whole of "Researching 1": fake data with owner `[name]` sitting above
+    real research. Nothing in the code referenced it — `grep -rn '_fixture'` outside `.git` hit
+    only `index.json` and past DEVBOOK entries — so the delete is just the file plus its slug.
+    After it: headings read `["Your purchases","Shortlisted 2"]`, the empty "Researching" heading
+    correctly does not render, both real cards still show, 0 console errors and no horizontal
+    scroll at 1280px and 375px.
+  - **F8 is 2 of 8 cards, and both are Bryce's.** Avery, Robert and Raul have not started. Nothing
+    in this merge changes that.
+  - The keyboard card's sourcing is thinner than the plates card: 7 `fair` + 2 `low`, no
+    `most-credible`, and 8 of its 9 sources are dated `"not stated"`. That passes the schema —
+    `0005` allows `"not stated"` on purpose — but it is worth a look before F8 is called done.
+- **Reviewer verdict:** (pending)

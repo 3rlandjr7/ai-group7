@@ -22,7 +22,7 @@ one person can own and explain.
 |---|---|---|
 | Shopper | Open a card, read the research, compare 2–3 finalists, see where it is cheapest, copy a summary to send someone | Several times per purchase |
 | Grader / instructor | Read the repo, see the process records, hear each of us explain our own piece | Once |
-| Teammate | Build one component, research two cards, open a PR | Weekly |
+| Teammate | Research two cards and send them in; Avery plans the build, Camila opens the PRs | Weekly |
 
 ## 3. Features (smallest useful version first)
 
@@ -30,16 +30,21 @@ Shared checks on every feature: page loads with **no console errors**; correct a
 horizontal scroll and nothing clipped; uses only `styles.css` variables, no hard-coded colours or
 fonts; no `<script>` tags inside component files.
 
+**F3–F6 ownership changed on 2026-11-20** (decision 0007). They are no longer one teammate each,
+prototyped in free Claude: Avery plans the build and Camila implements it in Claude Code. The
+shared checks above bind that build exactly as they bound the four components, and each feature's
+Definition of Done below is unchanged.
+
 | # | Feature | Owner | Must / Nice | Definition of Done |
 |---|---|---|---|---|
 | F1 | **Page shell** — header, nav, footer, section includes, `styles.css` tokens | Lead | Must | ✅ **Done 2026-11-19.** 0 console errors; all 4 placeholders load; no horizontal scroll at 375/768/1280. Nav-link check partial until sections carry real content — see DEVBOOK |
 | F2 | **Data layer** — `FakeStore` reads committed card files, `schema.js` validates every one on load | Lead | Must | ✅ **Done 2026-11-19.** Valid card loads (0 console errors); a deliberately malformed card produced **10 readable on-screen errors** naming the field and why, while the valid card still loaded and the page stayed intact. Screenshot in DEVBOOK |
-| F3 | **Purchase card tile** — one card showing its stage | Teammate 1 | Must | Renders a card at each of the 9 stages from sample data; readable at 375px; stage is visually distinguishable |
-| F4 | **Comparison table** — ranked factors, max 3 products, total-cost-of-ownership row | Teammate 2 | Must | 3 product columns with no sideways scroll at 375px; TCO row present; "Not published" shown where a spec is missing |
-| F5 | **Price table + "Is the sale real?"** | Teammate 3 | Must | Rows sorted by total, cheapest first — verified by hand against the data; each row shows the store and when the price was checked; list-vs-current drives the verdict. A finalist with no fetchable price shows **"price not shown — see at <store> →"** in its own row, never a blank cell (see 0005: an invisible gap reads as "worse option"). If a fetch fails, the previous number shows with its date rather than an empty cell |
-| F6 | **Share-message box** — plain text, §6 format | Teammate 4 | Must | One complete plain-text message, no markdown; pasted into a notes app it reads complete and scannable on a phone |
+| F3 | **Purchase card tile** — one card showing its stage | Camila (plan: Avery) | Must | Renders a card at each of the 9 stages from sample data; readable at 375px; stage is visually distinguishable |
+| F4 | **Comparison table** — ranked factors, max 3 products, total-cost-of-ownership row | Camila (plan: Avery) | Must | 3 product columns with no sideways scroll at 375px; TCO row present; "Not published" shown where a spec is missing |
+| F5 | **Price table + "Is the sale real?"** | Camila (plan: Avery) | Must | Rows sorted by total, cheapest first — verified by hand against the data; each row shows the store and when the price was checked; list-vs-current drives the verdict. A finalist with no fetchable price shows **"price not shown — see at <store> →"** in its own row, never a blank cell (see 0005: an invisible gap reads as "worse option"). If a fetch fails, the previous number shows with its date rather than an empty cell |
+| F6 | **Share-message box** — plain text, §6 format | Camila (plan: Avery) | Must | One complete plain-text message, no markdown; pasted into a notes app it reads complete and scannable on a phone |
 | F7 | **Dashboard** — cards grouped by stage | Lead | Must | Every card file appears under the correct stage heading; counts match the files on disk |
-| F8 | **Research content** — 2 purchase cards each | All 4 teammates | Must | Each card has ≥3 sources with credibility tier **and date**, 2–3 finalists, and the research date. **Finalists come from the sources, not from browsing stores** — §A's "source table first, then shortlist" order, which is what keeps availability bias out (0005). Every `choose X if…` branch keys on a **reader fact** ("if you shave more than twice a week"), never product expertise ("if you want milder blade exposure"); where no reader-fact discriminator exists, the card states a default — "if you don't know which, get X". No stored verdict, no weights, no scores. No placeholder text left |
+| F8 | **Research content** — 2 purchase cards each | Bryce, Avery, Robert, Raul | Must | Each card has ≥3 sources with credibility tier **and date**, 2–3 finalists, and the research date. **Finalists come from the sources, not from browsing stores** — §A's "source table first, then shortlist" order, which is what keeps availability bias out (0005). Every `choose X if…` branch keys on a **reader fact** ("if you shave more than twice a week"), never product expertise ("if you want milder blade exposure"); where no reader-fact discriminator exists, the card states a default — "if you don't know which, get X". No stored verdict, no weights, no scores. No placeholder text left |
 | F8b | **One shared research prompt template**, committed | Lead | Must | A single template in the repo that enforces sources-first ordering and the discriminator rule; each card records its inputs. Not one prompt per card — eight prompts means eight inconsistent research qualities (0005) |
 | F9 | **Live price fetcher** — open storefront APIs, run on a schedule | Lead | Must | ✅ **Done 2026-11-20.** Verified live: `leafshave.com 79.00 USD (was 109.00)`, `hensonshaving.com 105.00 USD (was 150.96)` — cheapest *available* variant, not `variants[0]` which would have reported 139.00. Robots gate **failed closed** on an unreadable `robots.txt` and skipped the host. A broken URL kept the previous price with its **original** timestamp; `delisted` fired only on the 3rd consecutive 404 |
 | F10 | **robots.txt gate + compliance log** | Lead *(review: co-integrator)* | Must | ✅ **Done 2026-11-20** — shipped inside F9; they are one program (decision 0006 supersedes 0004 on ownership). Verified: an unreadable `robots.txt` produced `skipped-by-robots` with the reason *"failing closed"*, and no fetch was attempted. `data/compliance-log.json` records the decision per host plus a per-run summary |
@@ -84,22 +89,18 @@ field; that was wrong and is corrected |
 | # | Question | Who decides | Answer |
 |---|---|---|---|
 | Q1 | What is the app called? | Team | **Shortlist** — provisional, 2026-11-19. Change in `index.html` and `README.md` if the team prefers another |
-| Q2 | Who is teammate 1–4, and which component is theirs? | Team | **open — the team splits this among themselves.** Four components: card tile, comparison table, price table, share box |
+| Q2 | Who is teammate 1–4, and which component is theirs? | Team | **answered 2026-11-20 — the question no longer applies.** The per-teammate component split was dropped at the kickoff: Avery plans the build, Camila implements it in Claude Code. See `docs/decisions/0007`. F3–F6 still have to exist; they are just not four separate owners |
 | Q3 | What is the deadline? | Instructor | dropped 2026-11-19 — not tracked here |
 | Q4 | Colours and fonts for `styles.css` | Lead | **answered** 2026-11-19 — palette applied, all pairs pass WCAG AA; system font, no web font |
 | Q5 | Does the repo default branch move to `main`? | Lead | **done** 2026-11-19 — default is `main`; the stray branch is deleted |
-| Q6 | Which two of the nine products does each person research? | Team | **open — the team splits this**, with one done together as a worked example |
+| Q6 | Which two products does each person research? | Team | **open — the team splits this**, with one done together as a worked example. The nine in `docs/BRIEF.md` §10 are an example list, not a fixed one; a researcher may pick any considered purchase. Taken so far: dinner plates and gaming keyboard — **both Bryce, so his two are done**; Avery, Robert and Raul have not started |
 
 ### TODO — placeholders still to fill
 
-These are real blanks in committed files. Grep for them: `[name]`, `[lead]`, `[integrator]`,
-`[group chat]`.
+These are real blanks in committed files. Grep for them: `[name]`.
 
 | File | What's blank | Who fills it |
 |---|---|---|
-| `TEAMMATE-GUIDE.md` | who to send work to, which group chat | Lead, when sending it |
-| `CLAUDE.md` | lead, co-integrator, four component owners | Lead, once Q2 is settled |
-| `README.md` | the "who does what" table | Lead, once Q2 is settled |
 | `sections/*.html` | `Owner: [name]` on each placeholder | replaced when the real components land |
 | `DEVBOOK.md` | one `[name]` in the setup entry | Lead |
 

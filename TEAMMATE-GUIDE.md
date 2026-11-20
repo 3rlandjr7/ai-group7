@@ -1,52 +1,28 @@
 # Building your part (no coding needed)
 
-You have two jobs: **one component** of the app, and **two purchase cards** of research.
-You'll build both in free Claude (claude.ai), then send them to [lead] or [co-integrator], who
-adds them to the site. You don't need GitHub.
+Your job is **two purchase cards** of research — the part of the app that cannot be
+generated, because it is judgement about what to buy and why.
+
+You'll do it in free Claude (claude.ai), then send it to Camila, who adds it to the site.
+You don't need GitHub, and you don't need to write any code.
+
+> **Changed at the kickoff:** teammates used to build a UI component each as well. We dropped
+> that — Avery plans the page and Camila builds it in Claude Code. If you were told you own the
+> card tile or the price table, you no longer do. See `docs/decisions/0007`.
 
 ---
 
-## Job 1 — your component
+## Your two purchase cards
 
-A component is one self-contained block of the page. Yours is:
+Each card is research on one product someone might buy. Two each, with one done together as a
+worked example. There's a suggested list in `docs/BRIEF.md`, but it's only a suggestion — pick
+anything you'd actually buy.
 
-> **[the team picks who takes which: purchase card tile · comparison table · price table · share box]**
+In a **new** Claude chat, paste the whole of **`prompts/product-research.md`** — the shared
+research template, which Rene will send you. Everyone uses the same one, so eight cards come
+back comparable instead of eight different shapes.
 
-### Start a new chat in Claude and paste this
-
-> Build one component of a web app as a single HTML snippet with its CSS in a `<style>` tag.
-> Make it an artifact.
->
-> Component: **[your component]**
-> What it shows: **[lead fills in — see docs/PLAN.md for your feature's Definition of Done]**
->
-> Colors: background #fbfaf8, text #1b1d1f, main #1f6f5c, accent #a85a2b
-> Font: the browser default system font — don't load a web font
->
-> Rules: no page header, footer or navigation menu — just this one block. No JavaScript.
-> No external libraries. Must look good on a phone (375px wide). Use made-up sample values so
-> I can see it filled in.
->
-> Before you build, ask me up to 3 questions and list anything you're assuming.
-
-### Then
-
-Keep asking for changes until you like it — "make the heading bigger", "put the price on its own
-line". Check it against your feature's **Definition of Done** in `docs/PLAN.md`; [lead] will
-share it.
-
-**Use sample values, not real data.** [lead] wires your block up to real data afterwards. Your job
-is how it looks and reads, not where the numbers come from.
-
----
-
-## Job 2 — your two purchase cards
-
-Each card is research on one product someone might buy. The team splits the nine products
-between the four of you — two each, with one done together as a worked example.
-
-In a **new** Claude chat, use the research prompt template [lead] sends you. Do the steps in
-this order — it matters, and here's why.
+Do the steps in this order — it matters, and here's why.
 
 ### Step 1 — find the sources first, before any shopping
 
@@ -97,17 +73,17 @@ default: **"if you don't know which, get X."** That's more useful than a made-up
 
 ## Send it in
 
-Message [integrator] in [group chat] with:
+Send it to Camila, who adds it to the site:
 
-- your component's code (copy the artifact, or send its share link)
-- your two filled-in card templates
+- your two filled-in card templates — the whole of what Claude gave you, not a summary
 - any images — the actual files, and where they came from
 
 ## Please don't
 
-- change the colours or fonts — ask [lead] if you want different ones
-- build a whole page — just your one block
-- add JavaScript — [lead] handles anything that moves
+- record prices — the site fetches those itself, and yours would be stale within a day
+- pick a single winner — write `choose X if…` lines instead
+- fill a gap with a guess — "Not published" is a real answer, an invented number is not
+- skip the template and freestyle a chat — then nobody's cards match
 
 ---
 

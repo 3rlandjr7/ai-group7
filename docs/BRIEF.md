@@ -241,7 +241,9 @@ All tables include `user_id` + RLS.
 
 ## 10. Demo / seed data
 
-For the public repo and demo, use a **demo account with sample purchases** (no personal info):
+For the public repo and demo, use a **demo account with sample purchases** (no personal info).
+The table below is an **example, not a fixed list** — any considered purchase qualifies, and a
+researcher should pick something they would actually buy (clarified 2026-11-20):
 
 | Item | Stage | Notes |
 |---|---|---|

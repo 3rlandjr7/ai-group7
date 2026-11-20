@@ -10,8 +10,9 @@
 - Stack: plain HTML + CSS + a little JavaScript. `index.html` loads each block from a file with a
   small script; no build step, no framework.
 - Repo: https://github.com/3rlandjr7/ai-group7. Default branch: `main`. Hosting: GitHub Pages [TBD].
-- **Components** live one per file and have one owner each, like sections did. A component is a
-  self-contained block: card tile, comparison table, price table, share box.
+- **The page build** is Avery's plan, implemented by Camila in Claude Code (decision 0007). The
+  old "one component per teammate" split is dropped; how the page divides into files is Avery's
+  plan's business.
 - **Purchase cards** are data files, one per product, one owner each.
 - Component styles are scoped under their own id. Components use the variables in `styles.css` —
   never hard-code colors or fonts.
@@ -36,13 +37,15 @@ Do not re-derive a decision that already has a record. If you disagree with one,
 that supersedes it rather than quietly doing something different.
 
 ## Who owns what
-- Lead: [name]. Owns `index.html`, `styles.css`, the data layer, the price fetcher, `CLAUDE.md`,
+- Lead: Rene. Owns `index.html`, `styles.css`, the data layer, the price fetcher, `CLAUDE.md`,
   `AGENTS.md`, `.claude/`, and everything outside the component and card files. Reviews and merges
   every PR.
-- Co-integrator: [name]. Edits component and card files only, through PRs. Also owns the
+- Co-integrator: Camila. Edits component and card files only, through PRs. Also owns the
   robots.txt gate and the compliance log.
-- Component owners: card tile [name], comparison table [name], price table [name], share box [name].
-- Each of those four also owns two purchase-card data files. See `docs/decisions/0004`.
+- Page build: Avery plans it, Camila implements it (decision 0007). There are no per-teammate
+  component owners any more.
+- Research: Bryce, Avery, Robert and Raul each own two purchase-card data files. One card, one
+  owner. See `docs/decisions/0007`.
 - If a change needs a file the user doesn't own, stop and tell them to ask the lead.
 
 ## Git rules
