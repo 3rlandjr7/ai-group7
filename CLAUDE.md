@@ -41,7 +41,7 @@ that supersedes it rather than quietly doing something different.
   every PR.
 - Co-integrator: Camila. Edits component and card files only, through PRs. Also owns the
   robots.txt gate and the compliance log.
-- Component owners: card tile [name], comparison table [name], price table [name], share box [name].
+- Component owners: card tile Avery, comparison table Bryce, price table Raul, share box Robert.
 - Each of those four also owns two purchase-card data files. See `docs/decisions/0004`.
 - If a change needs a file the user doesn't own, stop and tell them to ask the lead.
 

@@ -14,10 +14,10 @@ Plan: [docs/PLAN.md](docs/PLAN.md). Why it's built this way: [docs/decisions/](d
 |---|---|---|
 | Rene | Lead: repo, shell, styles, data layer, price fetcher. Reviews and merges PRs | `index.html`, `styles.css` |
 | Camila | Co-integrator: turns artifacts into components, runs the robots.txt gate | conversions, compliance log |
-| [Name] | Builds a component in free Claude + 2 research cards | purchase card tile |
-| [Name] | Builds a component in free Claude + 2 research cards | comparison table |
-| [Name] | Builds a component in free Claude + 2 research cards | price table + "is the sale real?" |
-| [Name] | Builds a component in free Claude + 2 research cards | share-message box |
+| Avery | Builds a component in free Claude + 2 research cards | purchase card tile |
+| Bryce | Builds a component in free Claude + 2 research cards | comparison table |
+| Raul | Builds a component in free Claude + 2 research cards | price table + "is the sale real?" |
+| Robert | Builds a component in free Claude + 2 research cards | share-message box |
 
 ## How it fits together
 - `index.html`: page shell — header, nav, footer. Loads every block from its own file.
