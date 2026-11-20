@@ -1,7 +1,7 @@
 # Building your part (no coding needed)
 
 You have two jobs: **one component** of the app, and **two purchase cards** of research.
-You'll build both in free Claude (claude.ai), then send them to [lead] or [co-integrator], who
+You'll build both in free Claude (claude.ai), then send them to Rene or Camila, who
 adds them to the site. You don't need GitHub.
 
 ---
@@ -32,10 +32,10 @@ A component is one self-contained block of the page. Yours is:
 ### Then
 
 Keep asking for changes until you like it — "make the heading bigger", "put the price on its own
-line". Check it against your feature's **Definition of Done** in `docs/PLAN.md`; [lead] will
+line". Check it against your feature's **Definition of Done** in `docs/PLAN.md`; Rene will
 share it.
 
-**Use sample values, not real data.** [lead] wires your block up to real data afterwards. Your job
+**Use sample values, not real data.** Rene wires your block up to real data afterwards. Your job
 is how it looks and reads, not where the numbers come from.
 
 ---
@@ -45,7 +45,7 @@ is how it looks and reads, not where the numbers come from.
 Each card is research on one product someone might buy. The team splits the nine products
 between the four of you — two each, with one done together as a worked example.
 
-In a **new** Claude chat, use the research prompt template [lead] sends you. Do the steps in
+In a **new** Claude chat, use the research prompt template Rene sends you. Do the steps in
 this order — it matters, and here's why.
 
 ### Step 1 — find the sources first, before any shopping
@@ -97,7 +97,7 @@ default: **"if you don't know which, get X."** That's more useful than a made-up
 
 ## Send it in
 
-Send [integrator]:
+Send Rene or Camila:
 
 - your component's code (copy the artifact, or send its share link)
 - your two filled-in card templates
@@ -105,9 +105,9 @@ Send [integrator]:
 
 ## Please don't
 
-- change the colours or fonts — ask [lead] if you want different ones
+- change the colours or fonts — ask Rene if you want different ones
 - build a whole page — just your one block
-- add JavaScript — [lead] handles anything that moves
+- add JavaScript — Rene handles anything that moves
 
 ---
 
