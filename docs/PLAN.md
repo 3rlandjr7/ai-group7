@@ -92,12 +92,11 @@ field; that was wrong and is corrected |
 
 ### TODO — placeholders still to fill
 
-These are real blanks in committed files. Grep for them: `[name]`, `[lead]`, `[integrator]`,
-`[group chat]`.
+These are real blanks in committed files. Grep for them: `[name]`, `[lead]`, `[integrator]`.
 
 | File | What's blank | Who fills it |
 |---|---|---|
-| `TEAMMATE-GUIDE.md` | who to send work to, which group chat | Lead, when sending it |
+| `TEAMMATE-GUIDE.md` | who to send work to | Lead, when sending it |
 | `CLAUDE.md` | lead, co-integrator, four component owners | Lead, once Q2 is settled |
 | `README.md` | the "who does what" table | Lead, once Q2 is settled |
 | `sections/*.html` | `Owner: [name]` on each placeholder | replaced when the real components land |

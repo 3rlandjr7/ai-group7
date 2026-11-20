@@ -22,7 +22,7 @@ The prices update themselves automatically. The research is ours.
 
 ## What tonight has to decide
 
-Five things. Everything else is already done.
+Four things. Everything else is already done.
 
 | # | Decision |
 |---|---|
@@ -30,7 +30,6 @@ Five things. Everything else is already done.
 | 2 | Who is the **co-integrator** — the second person using Claude Code |
 | 3 | Who takes each of the **four components** |
 | 4 | Who researches which **two products** |
-| 5 | Where we send work to each other (group chat) |
 
 ---
 
@@ -63,7 +62,7 @@ Nine products, two each, one done together as a worked example:
 Pick things you'd actually buy or already know about. The research is better when you care.
 
 **5. Questions and logistics — 10 min**
-Group chat, when to check in, who to ask when stuck.
+When to check in, who to ask when stuck.
 
 ---
 

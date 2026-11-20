@@ -97,7 +97,7 @@ default: **"if you don't know which, get X."** That's more useful than a made-up
 
 ## Send it in
 
-Message [integrator] in [group chat] with:
+Send [integrator]:
 
 - your component's code (copy the artifact, or send its share link)
 - your two filled-in card templates
