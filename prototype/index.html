@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shortlist prototype</title>
+<!--
+  Throwaway prototype of where the Shortlist app is heading (docs/BRIEF.md + docs/PLAN.md).
+  Self-contained in prototype/ so it touches none of the team's owned files, and it is NOT
+  built the team's way (one file, inline script) — a picture of the goal, not code to copy.
+  All data below is SAMPLE data, shaped like data/cards/*.json so it maps onto the real schema.
+-->
+<style>
+  /* Same tokens as ai-group7/styles.css so the prototype looks like the real app will. */
+  :root {
+    --color-bg: #fbfaf8; --color-surface: #f2efe9; --color-text: #1b1d1f; --color-muted: #656b72;
+    --color-primary: #1f6f5c; --color-accent: #a85a2b;
+    --color-good: #1f6f5c; --color-warn: #8a5a12; --color-bad: #a33b32;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --space-s: .5rem; --space-m: 1rem; --space-l: 2rem; --radius: 12px; --max-width: 1000px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.5; }
+  header { display: flex; justify-content: space-between; align-items: center; gap: var(--space-m);
+           padding: var(--space-m) var(--space-l); border-bottom: 1px solid var(--color-surface); }
+  header a { color: var(--color-primary); font-weight: 700; text-decoration: none; font-size: 1.2rem; }
+  .banner { background: var(--color-accent); color: #fff; text-align: center; font-size: .85rem; padding: .3rem; }
+  main { max-width: var(--max-width); margin: 0 auto; padding: var(--space-l); }
+  h1 { margin: 0 0 var(--space-s); } h2 { margin-top: var(--space-l); font-size: 1.15rem; }
+  .muted { color: var(--color-muted); font-size: .9rem; }
+
+  /* Dashboard: one column per stage group */
+  .board { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-m); }
+  .stage h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--color-muted); margin: 0 0 var(--space-s); }
+  .tile { display: block; background: var(--color-surface); border-radius: var(--radius); padding: var(--space-m);
+          margin-bottom: var(--space-s); color: inherit; text-decoration: none; border-left: 4px solid var(--color-primary); }
+  .tile:hover { outline: 2px solid var(--color-primary); }
+  .tile strong { display: block; }
+  .pill { display: inline-block; font-size: .75rem; padding: .1rem .5rem; border-radius: 99px;
+          background: var(--color-primary); color: #fff; }
+
+  /* Stage progress bar on the detail view */
+  .stages { display: flex; flex-wrap: wrap; gap: 4px; margin: var(--space-m) 0; padding: 0; list-style: none; }
+  .stages li { font-size: .75rem; padding: .2rem .5rem; border-radius: 99px; background: var(--color-surface); color: var(--color-muted); }
+  .stages li.done { background: #d9e8e3; color: var(--color-primary); }
+  .stages li.now { background: var(--color-primary); color: #fff; font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  th, td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--color-surface); vertical-align: top; }
+  th { color: var(--color-muted); font-weight: 600; font-size: .8rem; }
+  .tier { font-size: .75rem; padding: .05rem .45rem; border-radius: 99px; white-space: nowrap; }
+  .tier.most-credible { background: #d9e8e3; color: var(--color-good); }
+  .tier.fair { background: #f1e6d3; color: var(--color-warn); }
+  .tier.low { background: #f3dcd9; color: var(--color-bad); }
+  .lowest { color: var(--color-good); font-weight: 600; font-size: .75rem; }
+  .unpriced td { color: var(--color-muted); font-style: italic; }
+  .verdict { padding: var(--space-m); border-radius: var(--radius); background: var(--color-surface); border-left: 4px solid; margin-top: var(--space-m); }
+  .verdict.real { border-color: var(--color-good); } .verdict.normal { border-color: var(--color-warn); } .verdict.inflated { border-color: var(--color-bad); }
+
+  .finalists { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-m); }
+  .finalist { background: var(--color-surface); border-radius: var(--radius); padding: var(--space-m); }
+  .choose li { margin-bottom: .3rem; }
+  textarea { width: 100%; min-height: 220px; font: .85rem ui-monospace, Consolas, monospace; padding: var(--space-s);
+             border: 1px solid #ddd; border-radius: var(--radius); background: #fff; color: var(--color-text); }
+  button { background: var(--color-primary); color: #fff; border: 0; border-radius: var(--radius); padding: .5rem 1rem; font: inherit; cursor: pointer; }
+  .back { display: inline-block; margin-bottom: var(--space-m); color: var(--color-primary); }
+
+  @media (max-width: 600px) {
+    header, main { padding: var(--space-m); }
+    th, td { padding: .35rem .3rem; font-size: .85rem; }
+  }
+</style>
+</head>
+<body>
+<div class="banner">Prototype · sample data only, not real research or live prices</div>
+<header><a href="#">Shortlist</a><span class="muted">Purchase research &amp; tracking</span></header>
+<main id="app"></main>
+
+<script>
+// Stage list copied from ai-group7/app/schema.js so the prototype uses the same vocabulary.
+const STAGES = ['idea','researching','shortlisted','decided','watching','bought','return-window','owned','closed'];
+const LABEL = s => s.replace('-', ' ').replace(/^./, c => c.toUpperCase());
+
+// Sample cards. Items come from the brief's demo list (§10). The razor prices echo what the
+// real fetcher reported in PLAN.md F9; everything else is invented to show the layout.
+const CARDS = [
+  {
+    slug: 'safety-razor', title: 'Safety razor', stage: 'decided', researched_on: '2026-11-19',
+    brief: 'Single-blade, under $100, new only',
+    sources: [
+      { name: 'Independent lab-style review (sample)', tier: 'most-credible', dated: '2026-03-02' },
+      { name: 'Manufacturer spec pages', tier: 'fair', dated: 'not stated' },
+      { name: 'Shaving forum owner thread', tier: 'low', dated: '2025-10-14' },
+    ],
+    finalists: [
+      { name: 'Leaf Two', why: 'Pivoting head, forgiving for beginners' },
+      { name: 'Henson razor', why: 'Very low blade exposure, machined aluminum' },
+    ],
+    compare: [
+      ['Blade type', 'Half or full blade', 'Standard double-edge'],
+      ['Head', 'Pivoting', 'Fixed'],
+      ['Weight', 'Not published', '~2 oz'],
+      ['Blade cost / yr', '~$15 (sample)', '~$10 (sample)'],
+      ['Total cost, yr 1', '~$94', '~$115'],
+    ],
+    choose_if: [
+      { condition: 'you have never used a safety razor', pick: 'Leaf Two' },
+      { condition: 'you shave more than four times a week', pick: 'Henson razor' },
+    ],
+    prices: [
+      { store: 'leafshave.com', product: 'Leaf Two', total: 79.00, was: 109.00, stock: 'In stock', checked: '2026-11-20 09:17' },
+      { store: 'hensonshaving.com', product: 'Henson razor', total: 105.00, was: 150.96, stock: 'In stock', checked: '2026-11-20 09:17' },
+      { store: 'Amazon', product: 'Leaf Two', total: null, url: '#' },
+    ],
+    sale: { list: 109, low: 69, high: 109, today: 79, verdict: 'real', target: 75 },
+  },
+  { slug: 'fridge', title: 'Top-freezer refrigerator', stage: 'watching', researched_on: '2026-11-12', brief: '30" wide spot, two finalists' },
+  { slug: 'printer', title: 'Printer / scanner all-in-one', stage: 'researching', researched_on: '2026-11-18', brief: 'Text docs, prints rarely, < $150' },
+  { slug: 'fireplace', title: 'Fireplace log tools', stage: 'idea', researched_on: '2026-11-19', brief: 'Open wood fireplace, < $50' },
+  { slug: 'footrest', title: 'Under-desk footrest', stage: 'shortlisted', researched_on: '2026-11-15', brief: '$30–60, open-box OK' },
+  { slug: 'drip-pans', title: 'Stove drip pans + coils', stage: 'return-window', researched_on: '2026-11-01', brief: 'OEM part #s · return by Dec 1' },
+  { slug: 'mouse', title: 'Gaming mouse', stage: 'watching', researched_on: '2026-11-10', brief: 'Discontinued favourite + backup' },
+];
+
+const money = n => '$' + n.toFixed(2);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+
+// Dashboard (PLAN F7 + F3): cards grouped under their stage, only stages that have cards.
+function dashboard() {
+  const groups = STAGES.map(s => [s, CARDS.filter(c => c.stage === s)]).filter(([, cs]) => cs.length);
+  return `<h1>Your purchases</h1><p class="muted">${CARDS.length} cards · tap one to open it</p>
+  <div class="board">${groups.map(([s, cs]) => `<section class="stage"><h3>${LABEL(s)} (${cs.length})</h3>
+    ${cs.map(c => `<a class="tile" href="#${c.slug}"><strong>${esc(c.title)}</strong>
+      <span class="muted">${esc(c.brief)}</span><br><span class="pill">${LABEL(c.stage)}</span></a>`).join('')}
+  </section>`).join('')}</div>`;
+}
+
+// Price table (PLAN F5): cheapest total first; stores we may not republish get their own
+// "price not shown" row instead of a blank cell (decision 0005).
+function priceTable(c) {
+  const priced = c.prices.filter(p => p.total != null).sort((a, b) => a.total - b.total);
+  const unpriced = c.prices.filter(p => p.total == null);
+  const rows = priced.map((p, i) => `<tr><td>${esc(p.store)}${i === 0 ? '<br><span class="lowest">Lowest today</span>' : ''}</td>
+      <td>${esc(p.product)}</td><td>${money(p.total)}<br><span class="muted"><s>${money(p.was)}</s></span></td>
+      <td>${esc(p.stock)}</td><td class="muted">${esc(p.checked)}</td></tr>`).join('')
+    + unpriced.map(p => `<tr class="unpriced"><td>${esc(p.store)}</td><td>${esc(p.product)}</td>
+      <td colspan="3">Price not shown — <a href="${p.url}">see at ${esc(p.store)} →</a></td></tr>`).join('');
+  const s = c.sale, words = { real: 'Real deal', normal: 'Normal price', inflated: 'Inflated list price' };
+  return `<table><thead><tr><th>Store</th><th>Product</th><th>Total</th><th>Stock</th><th>Checked</th></tr></thead>
+    <tbody>${rows}</tbody></table>
+    <h2>Is the sale real?</h2>
+    <table><thead><tr><th>List</th><th>All-time low</th><th>All-time high</th><th>Today</th></tr></thead>
+    <tbody><tr><td>${money(s.list)}</td><td>${money(s.low)}</td><td>${money(s.high)}</td><td>${money(s.today)}</td></tr></tbody></table>
+    <div class="verdict ${s.verdict}"><strong>${words[s.verdict]}.</strong> Target price: ${money(s.target)}.</div>`;
+}
+
+// Share message (PLAN F6 / brief §6): one plain-text message, no markdown.
+function shareText(c) {
+  const cheapest = name => c.prices.filter(p => p.product === name && p.total != null).sort((a, b) => a.total - b.total)[0];
+  const lines = [`Pick: ${c.choose_if[0].pick} if ${c.choose_if[0].condition}.`, ''];
+  c.finalists.forEach((f, i) => {
+    const p = cheapest(f.name);
+    lines.push(`${i + 1}. ${f.name}`, `- ${p ? money(p.total) + ' at ' + p.store : 'Price not shown'}`, `- ${f.why}`, '');
+  });
+  lines.push(c.choose_if.map(b => `${b.pick} = ${b.condition}`).join(' / '), 'Prices may change.');
+  return lines.join('\n');
+}
+
+function detail(c) {
+  const at = STAGES.indexOf(c.stage);
+  const head = `<a class="back" href="#">← All purchases</a><h1>${esc(c.title)}</h1>
+    <p class="muted">${esc(c.brief)} · researched ${c.researched_on}</p>
+    <ul class="stages">${STAGES.map((s, i) => `<li class="${i < at ? 'done' : i === at ? 'now' : ''}">${LABEL(s)}</li>`).join('')}</ul>`;
+  if (!c.sources) return head + `<p class="muted">This sample card only has a title so far. Open <a href="#safety-razor">Safety razor</a> to see a fully researched card.</p>`;
+  return head + `
+    <h2>1 · Sources</h2>
+    <table><thead><tr><th>Source</th><th>Credibility</th><th>Dated</th></tr></thead><tbody>
+      ${c.sources.map(s => `<tr><td>${esc(s.name)}</td><td><span class="tier ${s.tier}">${s.tier.replace('-', ' ')}</span></td><td>${esc(s.dated)}</td></tr>`).join('')}
+    </tbody></table>
+
+    <h2>2 · Finalists</h2>
+    <div class="finalists">${c.finalists.map(f => `<div class="finalist"><strong>${esc(f.name)}</strong><br><span class="muted">${esc(f.why)}</span></div>`).join('')}</div>
+
+    <h2>3 · Comparison</h2>
+    <table><thead><tr><th>Factor</th>${c.finalists.map(f => `<th>${esc(f.name)}</th>`).join('')}</tr></thead><tbody>
+      ${c.compare.map(r => `<tr>${r.map((v, i) => i ? `<td>${esc(v)}</td>` : `<th>${esc(v)}</th>`).join('')}</tr>`).join('')}
+    </tbody></table>
+    <ul class="choose">${c.choose_if.map(b => `<li>Choose <strong>${esc(b.pick)}</strong> if ${esc(b.condition)}.</li>`).join('')}</ul>
+
+    <h2>4 · Where it's cheapest</h2>${priceTable(c)}
+
+    <h2>5 · Share</h2>
+    <textarea id="share" readonly>${esc(shareText(c))}</textarea>
+    <p><button id="copy">Copy message</button> <span id="copied" class="muted"></span></p>`;
+}
+
+// Tiny hash router: "#" = dashboard, "#slug" = that card.
+function render() {
+  const card = CARDS.find(c => c.slug === location.hash.slice(1));
+  document.getElementById('app').innerHTML = card ? detail(card) : dashboard();
+  window.scrollTo(0, 0);
+  const btn = document.getElementById('copy');
+  if (btn) btn.onclick = () => navigator.clipboard.writeText(document.getElementById('share').value)
+    .then(() => document.getElementById('copied').textContent = 'Copied!')
+    .catch(() => document.getElementById('copied').textContent = 'Select the text and copy it manually.');
+}
+addEventListener('hashchange', render);
+render();
+</script>
+</body>
+</html>
