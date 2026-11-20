@@ -88,7 +88,7 @@ field; that was wrong and is corrected |
 | Q3 | What is the deadline? | Instructor | dropped 2026-11-19 — not tracked here |
 | Q4 | Colours and fonts for `styles.css` | Lead | **answered** 2026-11-19 — palette applied, all pairs pass WCAG AA; system font, no web font |
 | Q5 | Does the repo default branch move to `main`? | Lead | **done** 2026-11-19 — default is `main`; the stray branch is deleted |
-| Q6 | Which two of the nine products does each person research? | Team | **open — the team splits this**, with one done together as a worked example |
+| Q6 | Which two products does each person research? | Team | **open — the team splits this**, with one done together as a worked example. The nine in `docs/BRIEF.md` §10 are an example list, not a fixed one; a researcher may pick any considered purchase. Taken so far: gaming keyboard (Bryce) |
 
 ### TODO — placeholders still to fill
 

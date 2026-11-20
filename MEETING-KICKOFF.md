@@ -54,12 +54,14 @@ Four pieces, one person each. Pick what appeals; they're all about the same size
 | **Share box** | The plain-text summary you'd text to someone |
 
 **4. Pick products — 10 min**
-Nine products, two each, one done together as a worked example:
+Two products each, one done together as a worked example. This list is only a starting
+point — swap in anything you'd actually buy:
 
 > fridge · printer/scanner · fireplace tools · acorn picker-upper · OBD2 scanner · safety razor ·
 > under-desk footrest · stove drip pans · gaming mouse
 
 Pick things you'd actually buy or already know about. The research is better when you care.
+Already taken: **gaming keyboard — Bryce**.
 
 **5. Questions and logistics — 10 min**
 When to check in, who to ask when stuck.

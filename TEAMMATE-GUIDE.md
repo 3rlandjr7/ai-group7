@@ -42,8 +42,9 @@ is how it looks and reads, not where the numbers come from.
 
 ## Job 2 — your two purchase cards
 
-Each card is research on one product someone might buy. The team splits the nine products
-between the four of you — two each, with one done together as a worked example.
+Each card is research on one product someone might buy. Two each, with one done together as a
+worked example. There's a suggested list in `docs/BRIEF.md`, but it's only a suggestion — pick
+anything you'd actually buy.
 
 In a **new** Claude chat, use the research prompt template Rene sends you. Do the steps in
 this order — it matters, and here's why.
