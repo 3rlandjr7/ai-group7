@@ -22,7 +22,7 @@ The prices update themselves automatically. The research is ours.
 
 ## What tonight has to decide
 
-Five things. Everything else is already done.
+Four things. Everything else is already done.
 
 | # | Decision |
 |---|---|
@@ -39,13 +39,15 @@ Five things. Everything else is already done.
 **1. What it is and why — 10 min**
 Walk through the app. Open the repo and look at the live page.
 
-**2. The two jobs — 5 min**
-Everyone who isn't the lead or co-integrator does two things:
-- build **one component** (a visual piece of the page)
-- research **two products**
+**2. The job — 5 min**
+Everyone who isn't the lead, the co-integrator or the planner does one thing:
+- research **two products**, one purchase card each
 
-**3. Pick components — 5 min**
-Four pieces, one person each. Pick what appeals; they're all about the same size.
+Building a component each was the old plan; it was dropped here — see `docs/decisions/0007`.
+
+**3. Pick products — 5 min**
+Two each. The list in `docs/BRIEF.md` §10 is an example, not a menu — pick something you would
+actually buy.
 
 | Component | What it is |
 |---|---|
@@ -55,23 +57,25 @@ Four pieces, one person each. Pick what appeals; they're all about the same size
 | **Share box** | The plain-text summary you'd text to someone |
 
 **4. Pick products — 10 min**
-Nine products, two each, one done together as a worked example:
+Two products each, one done together as a worked example. This list is only a starting
+point — swap in anything you'd actually buy:
 
 > fridge · printer/scanner · fireplace tools · acorn picker-upper · OBD2 scanner · safety razor ·
 > under-desk footrest · stove drip pans · gaming mouse
 
 Pick things you'd actually buy or already know about. The research is better when you care.
+Already taken: **gaming keyboard — Bryce**.
 
 **5. Questions and logistics — 10 min**
-Group chat, when to check in, who to ask when stuck.
+When to check in, who to ask when stuck.
 
 ---
 
 ## What you leave with
 
-- Your component
 - Your two products
-- `TEAMMATE-GUIDE.md` — step-by-step for both jobs
+- `prompts/product-research.md` — the shared research template everyone uses
+- `TEAMMATE-GUIDE.md` — step-by-step for the research job
 - The colours to use (already in the guide; please don't change them)
 
 ---

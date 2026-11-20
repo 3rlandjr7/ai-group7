@@ -14,8 +14,9 @@ You don't need GitHub, and you don't need to write any code.
 
 ## Your two purchase cards
 
-Each card is research on one product someone might buy. The team splits the nine products
-between the four of you — two each, with one done together as a worked example.
+Each card is research on one product someone might buy. Two each, with one done together as a
+worked example. There's a suggested list in `docs/BRIEF.md`, but it's only a suggestion — pick
+anything you'd actually buy.
 
 In a **new** Claude chat, paste the whole of **`prompts/product-research.md`** — the shared
 research template, which Rene will send you. Everyone uses the same one, so eight cards come
@@ -72,7 +73,7 @@ default: **"if you don't know which, get X."** That's more useful than a made-up
 
 ## Send it in
 
-Message Camila in [group chat] with:
+Send it to Camila, who adds it to the site:
 
 - your two filled-in card templates — the whole of what Claude gave you, not a summary
 - any images — the actual files, and where they came from

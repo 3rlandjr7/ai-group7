@@ -22,7 +22,7 @@ one person can own and explain.
 |---|---|---|
 | Shopper | Open a card, read the research, compare 2–3 finalists, see where it is cheapest, copy a summary to send someone | Several times per purchase |
 | Grader / instructor | Read the repo, see the process records, hear each of us explain our own piece | Once |
-| Teammate | Build one component, research two cards, open a PR | Weekly |
+| Teammate | Research two cards and send them in; Avery plans the build, Camila opens the PRs | Weekly |
 
 ## 3. Features (smallest useful version first)
 
@@ -93,18 +93,14 @@ field; that was wrong and is corrected |
 | Q3 | What is the deadline? | Instructor | dropped 2026-11-19 — not tracked here |
 | Q4 | Colours and fonts for `styles.css` | Lead | **answered** 2026-11-19 — palette applied, all pairs pass WCAG AA; system font, no web font |
 | Q5 | Does the repo default branch move to `main`? | Lead | **done** 2026-11-19 — default is `main`; the stray branch is deleted |
-| Q6 | Which two of the nine products does each person research? | Team | **open — the team splits this**, with one done together as a worked example |
+| Q6 | Which two products does each person research? | Team | **open — the team splits this**, with one done together as a worked example. The nine in `docs/BRIEF.md` §10 are an example list, not a fixed one; a researcher may pick any considered purchase. Taken so far: dinner plates and gaming keyboard — **both Bryce, so his two are done**; Avery, Robert and Raul have not started |
 
 ### TODO — placeholders still to fill
 
-These are real blanks in committed files. Grep for them: `[name]`, `[lead]`, `[integrator]`,
-`[group chat]`.
+These are real blanks in committed files. Grep for them: `[name]`.
 
 | File | What's blank | Who fills it |
 |---|---|---|
-| `TEAMMATE-GUIDE.md` | who to send work to, which group chat | Lead, when sending it |
-| `CLAUDE.md` | lead, co-integrator, four component owners | Lead, once Q2 is settled |
-| `README.md` | the "who does what" table | Lead, once Q2 is settled |
 | `sections/*.html` | `Owner: [name]` on each placeholder | replaced when the real components land |
 | `DEVBOOK.md` | one `[name]` in the setup entry | Lead |
 

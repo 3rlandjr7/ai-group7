@@ -277,3 +277,63 @@ the app without asking you.
   in `TEAMMATE-GUIDE.md`. `sections/*.html` and `index.html` are untouched on purpose — what
   replaces them is Avery's plan's business.
 - **Reviewer verdict:** (pending)
+
+### 2026-11-20: Integrate the two open branches (F8 keyboard card, design brief, docs under 0007)
+- **What changed:** Merged `claude/blissful-mccarthy-rup9gc` (clean) and
+  `claude/awesome-clarke-3ij3j4` (6 conflicts) into one integration branch. From `clarke` this
+  brings Bryce's second card, `data/cards/gaming-keyboard.json`, and `docs/DESIGN-BRIEF.md` — one
+  page for whoever designs the look, instead of BRIEF + PLAN + six decision records. `docs/BRIEF.md`
+  §10 now says the nine seed products are an example list, not a fixed one.
+- **Why the conflicts resolved the way they did:** `clarke` was written against decision `0004`
+  and assigned four component owners — card tile Avery, comparison table Bryce, price table Raul,
+  share box Robert. `0007` (on `blissful`, decided by Rene at the kickoff) supersedes `0004` and
+  deletes that split. The records' own rule is that the newest accepted record wins, so every
+  conflicted hunk took the `0007` side. This is a **content** decision, not a mechanical one:
+  `clarke`'s version of those five doc files describes a process the team has abandoned.
+- **Not a straight "take ours" anywhere.** Three hunks kept `clarke`'s work:
+  - `data/cards/index.json` — both card slugs, not one. A list gaining a different entry on each
+    side is the clearly-safe conflict case.
+  - `TEAMMATE-GUIDE.md` "Send it in" — `clarke` deleted the dead `[group chat]` placeholder, which
+    the F8b entry above had logged as a known blank. Kept that deletion, kept `0007`'s recipient:
+    "Send it to Camila, who adds it to the site". The blank is now gone from the guide.
+  - `docs/PLAN.md` Q6 — kept `clarke`'s "example list, not fixed" clarification.
+- **`DESIGN-BRIEF.md` edited on the way in (4 lines).** It was written under `0004` and said "the
+  four components, one owner each". Under `0007` they are four blocks of one page with one planner
+  and one builder. §2, §3, §4 and §7 reworded; the design content itself — tokens, 375px rule,
+  honest empty states, out-of-scope list — is untouched.
+- **Definition of Done and evidence:**
+  - [x] **No conflict markers anywhere** — repo-wide grep for `<<<<<<<`, `>>>>>>>`, `=======`
+        outside `.git` → **NONE**. `git diff --diff-filter=U` → empty.
+  - [x] **Both new cards validate** — `validateCard` on each: `gaming-keyboard` **VALID**
+        (9 sources, 3 finalists, owner Bryce, researched_on 2026-11-19);
+        `dinner-plates` **VALID** (4 sources, 3 finalists, owner Bryce, 2026-11-19).
+  - [x] **The page renders all three cards under the right stages** — served over HTTP, headings
+        read `["Your purchases","Researching 1","Shortlisted 2"]`, and the text contains
+        "dinner plates", "Logitech G316" and "Test fixture". No validation errors on screen.
+  - [x] **No console errors, no horizontal scroll** — checked at 1280px and 375px: **0 console
+        errors, 0 page errors**, `scrollWidth > clientWidth` false at both. Screenshot taken at
+        375px.
+  - [x] **`index.json` is valid JSON** — parses, lists `_fixture, dinner-plates, gaming-keyboard`.
+  - [x] **No component-owner language left** — `TEAMMATE-GUIDE.md`, `CLAUDE.md`, `README.md`,
+        `MEETING-KICKOFF.md` and `docs/PLAN.md` F3–F6/Q2 all read per `0007`. The first run of
+        this check **failed**: three passages described the old split and had auto-merged without
+        conflicting, so resolving the six conflicts had not caught them — `MEETING-KICKOFF.md`
+        "build **one component**" and "Your component", and `docs/PLAN.md`'s teammate row "Build
+        one component, research two cards". All three rewritten; re-run leaves one hit, the
+        `CLAUDE.md` line that says the split *is dropped*.
+- **Files touched:** `CLAUDE.md`, `README.md`, `TEAMMATE-GUIDE.md`, `MEETING-KICKOFF.md`,
+  `docs/PLAN.md`, `docs/DESIGN-BRIEF.md`, `data/cards/index.json`, plus everything the two merges
+  carried in.
+- **Not confirmed / known limits:**
+  - **No fresh-chat Tester or Reviewer pass has been run** on either branch or on this merge.
+    Three DEVBOOK entries now read "Reviewer verdict: (pending)".
+  - **`data/cards/_fixture.json` is still there**, and on screen it is the whole of "Researching 1"
+    — fake data with owner `[name]` sitting above real research. Both the F7 entry and the fixture's
+    own note say to delete it once a real card exists. Two now exist. Left in place because
+    `AGENTS.md` forbids deleting files without showing the lead first.
+  - **F8 is 2 of 8 cards, and both are Bryce's.** Avery, Robert and Raul have not started. Nothing
+    in this merge changes that.
+  - The keyboard card's sourcing is thinner than the plates card: 7 `fair` + 2 `low`, no
+    `most-credible`, and 8 of its 9 sources are dated `"not stated"`. That passes the schema —
+    `0005` allows `"not stated"` on purpose — but it is worth a look before F8 is called done.
+- **Reviewer verdict:** (pending)
