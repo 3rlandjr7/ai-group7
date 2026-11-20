@@ -1,0 +1,35 @@
+{
+  "slug": "dinner-plates",
+  "updated_at": "2026-11-20T17:47:10+00:00",
+  "finalists": {
+    "rows": [
+      {
+        "store": "amazon.com",
+        "finalist": "Amazon Basics Glazed Stoneware Dinner Plates, 4-piece, 10.5 in., Ivory",
+        "status": "bad-url",
+        "note": "could not read a product handle from the URL",
+        "checked_at": "2026-11-20T17:47:10+00:00"
+      },
+      {
+        "store": "target.com",
+        "finalist": "Target Threshold designed with Studio McGee, 4pc Stoneware Dinner Plate Set, Cream, 10.75 in.",
+        "status": "bad-url",
+        "note": "could not read a product handle from the URL",
+        "checked_at": "2026-11-20T17:47:10+00:00"
+      },
+      {
+        "store": "walmart.com",
+        "finalist": "Better Homes & Gardens Sawyer Cream Stoneware Dinner Plate, 10.5 in.",
+        "status": "bad-url",
+        "note": "could not read a product handle from the URL",
+        "checked_at": "2026-11-20T17:47:10+00:00"
+      }
+    ]
+  },
+  "history": [
+    {
+      "at": "2026-11-20T17:47:10+00:00",
+      "prices": {}
+    }
+  ]
+}

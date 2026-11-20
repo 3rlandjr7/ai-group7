@@ -14,6 +14,11 @@
       "allowed": false,
       "reason": "robots.txt unreadable (URLError) - failing closed",
       "checked_at": "2026-11-20T03:14:03+00:00"
+    },
+    "keychron.com": {
+      "allowed": true,
+      "reason": "robots.txt HTTP 200; can_fetch(/products/keychron-v5-8k-qmk-wired-custom-mechanical-keyboard.json) = True",
+      "checked_at": "2026-11-20T17:47:11+00:00"
     }
   },
   "runs": [
@@ -58,6 +63,12 @@
       "hosts_checked": 3,
       "allowed": 2,
       "skipped": 1
+    },
+    {
+      "at": "2026-11-20T17:47:15+00:00",
+      "hosts_checked": 1,
+      "allowed": 1,
+      "skipped": 0
     }
   ],
   "changes": [
@@ -78,6 +89,12 @@
       "allowed": false,
       "reason": "robots.txt unreadable (URLError) - failing closed",
       "checked_at": "2026-11-20T03:13:20+00:00"
+    },
+    {
+      "host": "keychron.com",
+      "allowed": true,
+      "reason": "robots.txt HTTP 200; can_fetch(/products/keychron-v5-8k-qmk-wired-custom-mechanical-keyboard.json) = True",
+      "checked_at": "2026-11-20T17:47:11+00:00"
     }
   ]
 }

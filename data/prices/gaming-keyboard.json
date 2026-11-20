@@ -1,0 +1,54 @@
+{
+  "slug": "gaming-keyboard",
+  "updated_at": "2026-11-20T17:47:15+00:00",
+  "finalists": {
+    "rows": [
+      {
+        "store": "logitechg.com",
+        "finalist": "Logitech G316 X 98",
+        "status": "bad-url",
+        "note": "could not read a product handle from the URL",
+        "checked_at": "2026-11-20T17:47:10+00:00"
+      },
+      {
+        "store": "keychron.com",
+        "status": "ok",
+        "title": "Keychron V5 8K QMK Wired Custom Mechanical Keyboard",
+        "variant": "Fully Assembled Knob / Black / Keychron Super Red",
+        "price": 76.49,
+        "currency": "USD",
+        "on_sale": true,
+        "checked_at": "2026-11-20T17:47:12+00:00",
+        "url": "https://keychron.com/products/keychron-v5-8k-qmk-wired-custom-mechanical-keyboard",
+        "was": 84.99,
+        "from_price": true,
+        "finalist": "Keychron V5 8K",
+        "price_checked_at": "2026-11-20T17:47:12+00:00"
+      },
+      {
+        "store": "keychron.com",
+        "status": "ok",
+        "title": "Keychron V5 Ultra 8K Wireless Custom Mechanical Keyboard",
+        "variant": "Fully Assembled Knob / Black / Keychron Silk POM Switch - Red",
+        "price": 107.99,
+        "currency": "USD",
+        "on_sale": true,
+        "checked_at": "2026-11-20T17:47:14+00:00",
+        "url": "https://keychron.com/products/keychron-v5-ultra-8k-wireless-custom-mechanical-keyboard",
+        "was": 119.99,
+        "from_price": true,
+        "finalist": "Keychron V5 Ultra 8K",
+        "price_checked_at": "2026-11-20T17:47:14+00:00"
+      }
+    ]
+  },
+  "history": [
+    {
+      "at": "2026-11-20T17:47:15+00:00",
+      "prices": {
+        "keychron.com|Keychron V5 8K": 76.49,
+        "keychron.com|Keychron V5 Ultra 8K": 107.99
+      }
+    }
+  ]
+}
