@@ -197,3 +197,37 @@ the app without asking you.
   *(Resolved later the same day: the default branch was moved to `main` and the stray branch
   deleted. Left above as written, since this entry records what was true at the time.)*
 - **Reviewer verdict:** (pending — no fresh-chat Reviewer pass has been run)
+
+### 2026-11-20: F7 — dashboard, cards grouped by stage
+- **What changed:** New `app/dashboard.js` renders every valid card under its stage heading with
+  a count. `app/main.js` calls it instead of printing a bare total; `index.html` swapped the
+  `#app-status` block for `#dashboard`; dashboard styles appended to `styles.css`, all scoped
+  under `#dashboard`.
+- **Why:** F2's "2 cards loaded and valid." proved the data layer worked but answered nobody's
+  question. The reader wants to know what they are shopping for and how far each one has got —
+  that is a grouping, not a count. The count survives inside each stage heading, where it means
+  something. Stages are iterated from `STAGES` in `schema.js` rather than from the data, so they
+  always read in life-cycle order no matter what order the manifest lists cards in.
+- **Deliberately not built:** the card entries are plain — title, finalists, owner, date. F3
+  (card tile) is a teammate's component and owns how one card looks. Styling a handsome tile here
+  would guarantee one of the two gets thrown away.
+- **Definition of Done and evidence:**
+  - [x] **Every card appears under the correct stage heading** — page rendered
+        `["Researching 1","Shortlisted 1"]` with 2 card entries: the test fixture and
+        "Everyday cream dinner plates, 10.5 in. stoneware".
+  - [x] **Counts match the files on disk** — counted independently from the manifest:
+        `{'researching': 1, 'shortlisted': 1}`. Identical to the headings.
+  - [x] **A broken card still fails loudly (F2 not regressed)** — a deliberately malformed
+        `_broken.json` (bad stage, a forbidden `winner` field, no sources, no finalists) produced
+        **7 readable on-screen errors** naming each field and why, while both valid cards still
+        rendered and the page stayed intact. 0 uncaught page errors. Test file removed afterwards.
+  - [x] **No console errors, no horizontal scroll** — clean at 1280px and 375px.
+  - [x] **Only `styles.css` variables** — 0 hex, `rgb()` or `hsl()` literals in the dashboard
+        block.
+- **Files touched:** `app/dashboard.js` (new), `app/main.js`, `index.html`, `styles.css`
+- **Not confirmed / known limits:** no Tester or Reviewer pass has been run in a fresh chat.
+  `data/cards/_fixture.json` now occupies a stage heading of its own, so fake data sits beside
+  real research and looks legitimate on screen — it should be deleted now that a real card
+  exists, which is what its own note says to do. The dashboard does not link a card to anything,
+  because there is no detail view yet.
+- **Reviewer verdict:** (pending)
