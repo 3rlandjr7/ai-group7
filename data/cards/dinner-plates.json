@@ -1,0 +1,93 @@
+{
+  "slug": "dinner-plates",
+  "title": "Everyday cream dinner plates, 10.5 in. stoneware",
+  "stage": "shortlisted",
+  "researched_on": "2026-11-19",
+  "owner": "Bryce",
+  "no_credible_testing": "No independent lab or testing outlet has published a comparison of budget cream stoneware dinner plates that we could find. Everything below is retailer specification plus customer reports, so treat durability claims as unverified - brief section 5 says to state this rather than dress up low-tier sources as authoritative.",
+  "sources": [
+    {
+      "name": "Amazon listing - Amazon Basics Glazed Stoneware Dinner Plates, 4-piece (specs, 4.7 from 106 ratings)",
+      "tier": "fair",
+      "dated": "read 2026-11-19",
+      "url": "https://www.amazon.com/Amazon-Basics-Stoneware-Microwave-Dishwasher-Safe/dp/B0F4JV7PPT"
+    },
+    {
+      "name": "Target listing - Threshold designed with Studio McGee, 4pc 10.75 in. (specs, 3.3 from 6 ratings)",
+      "tier": "fair",
+      "dated": "read 2026-11-19",
+      "url": "https://www.target.com/p/4pc-10-75-34-stoneware-dinner-plate-set-cream-threshold-8482-designed-with/-/A-88677901"
+    },
+    {
+      "name": "Walmart listing - Better Homes & Gardens Sawyer Cream (specs, 3.8 from 12 ratings, plus the on-page comparison chart naming Murphy and Collins)",
+      "tier": "fair",
+      "dated": "read 2026-11-19",
+      "url": "https://www.walmart.com/ip/5451392709"
+    },
+    {
+      "name": "Customer reviews on the Target listing - colour reported as pink/peach rather than cream (3 stars, returned); printed pattern smudged (1 star); 66% would recommend",
+      "tier": "low",
+      "dated": "read 2026-11-19",
+      "url": "https://www.target.com/p/4pc-10-75-34-stoneware-dinner-plate-set-cream-threshold-8482-designed-with/-/A-88677901"
+    }
+  ],
+  "finalists": [
+    {
+      "name": "Amazon Basics Glazed Stoneware Dinner Plates, 4-piece, 10.5 in., Ivory",
+      "why": "Much the largest review base of the three (106 ratings at 4.7) and the lowest cost per plate. Smooth ivory with a raised rim; microwave and dishwasher safe.",
+      "stores": [
+        {
+          "host": "amazon.com",
+          "url": "https://www.amazon.com/Amazon-Basics-Stoneware-Microwave-Dishwasher-Safe/dp/B0F4JV7PPT",
+          "price_policy": "link-only"
+        }
+      ]
+    },
+    {
+      "name": "Target Threshold designed with Studio McGee, 4pc Stoneware Dinner Plate Set, Cream, 10.75 in.",
+      "why": "The only finalist with the woven-texture rim, and the longest returns window at 365 days. Microwave and dishwasher safe. Weakest review signal of the three (3.3 from 6 ratings) and one reviewer returned it over the colour.",
+      "stores": [
+        {
+          "host": "target.com",
+          "url": "https://www.target.com/p/4pc-10-75-34-stoneware-dinner-plate-set-cream-threshold-8482-designed-with/-/A-88677901",
+          "price_policy": "link-only"
+        }
+      ]
+    },
+    {
+      "name": "Better Homes & Gardens Sawyer Cream Stoneware Dinner Plate, 10.5 in.",
+      "why": "Sold as a single plate rather than a set of four, so it is the only option if you need an odd number or are replacing breakages. Soft cream with a ribbed edge; microwave and dishwasher safe.",
+      "stores": [
+        {
+          "host": "walmart.com",
+          "url": "https://www.walmart.com/ip/5451392709",
+          "price_policy": "link-only"
+        }
+      ]
+    }
+  ],
+  "choose_if": [
+    {
+      "condition": "you are buying a single plate or an odd number, for example replacing one that broke",
+      "pick": "Better Homes & Gardens Sawyer Cream Stoneware Dinner Plate, 10.5 in."
+    },
+    {
+      "condition": "you are buying online without seeing them first and want the safest bet",
+      "pick": "Amazon Basics Glazed Stoneware Dinner Plates, 4-piece, 10.5 in., Ivory"
+    },
+    {
+      "condition": "you can get to a Target and look at them in person before buying",
+      "pick": "Target Threshold designed with Studio McGee, 4pc Stoneware Dinner Plate Set, Cream, 10.75 in."
+    }
+  ],
+  "caveats": [
+    "No prices are stored for this card. All three finalists are Amazon, Target or Walmart, and decision 0003 links those without prices rather than republishing them. Every row will read \"price not shown - see at <store>\".",
+    "Prices were read during Black Friday on 2026-11-19 and will move. The reader must check the store.",
+    "Oven safety is unknown for all three - no listing states it. If you need oven-safe plates, none of these is confirmed.",
+    "The review bases are not comparable: 106 ratings for Amazon Basics against 6 for Target and 12 for Walmart. A 3.3 from 6 ratings is close to no information, not a verdict that the plates are bad.",
+    "Colour naming is inconsistent between stores - \"cream\", \"ivory\" and \"sour cream\" are used for what may or may not be the same shade. One Target reviewer called it pink/peach.",
+    "Walmart's own comparison chart names two better-reviewed plates from the same brand: Murphy Cream (4.7 from 49 ratings) and Collins Cream (4.5 from 99 ratings). Those listings were NOT opened, so their size and microwave and dishwasher safety are unconfirmed. Murphy in particular may beat Sawyer and should be checked before this card moves to decided.",
+    "Walmart's listing calls the Sawyer material ceramic in its comparison chart and stoneware in the description."
+  ],
+  "prices": []
+}
