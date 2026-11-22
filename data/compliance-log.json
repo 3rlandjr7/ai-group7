@@ -18,7 +18,7 @@
     "keychron.com": {
       "allowed": true,
       "reason": "robots.txt HTTP 200; can_fetch(/products/keychron-v5-8k-qmk-wired-custom-mechanical-keyboard.json) = True",
-      "checked_at": "2026-11-21T16:46:28+00:00"
+      "checked_at": "2026-11-22T17:08:46+00:00"
     }
   },
   "runs": [
@@ -72,6 +72,12 @@
     },
     {
       "at": "2026-11-21T16:46:32+00:00",
+      "hosts_checked": 1,
+      "allowed": 1,
+      "skipped": 0
+    },
+    {
+      "at": "2026-11-22T17:08:49+00:00",
       "hosts_checked": 1,
       "allowed": 1,
       "skipped": 0
